@@ -42,7 +42,7 @@ const Header: React.FC = () => {
             href="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
-            <Image src="/assets/w__5_-removebg-preview.png" width={100} height={100} alt="web-logo" />
+            <Image src="/assets/propainting_construction_web_logo.png" width={100} height={60} alt="web-logo" />
 
           </Link>
 
@@ -242,12 +242,14 @@ const Header: React.FC = () => {
                       href="/"
                       className="flex items-center space-x-3 rtl:space-x-reverse"
                     >
-                      <span className="whitespace-nowrap text-2xl font-semibold text-gray-900">
+                      {/* <span className="whitespace-nowrap text-2xl font-semibold text-gray-900">
                         <span className="bg-yellow-500 p-[1px] rounded-md">
                           PPC
                         </span>{" "}
                         ProPaintingConstruction
-                      </span>
+                      </span> */}
+
+                       <Image src="/assets/propainting_construction_mobile_logo.png" width={80} height={60} alt="web-logo" />
                     </Link>
                   </SheetTitle>
                 </SheetHeader>
