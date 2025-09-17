@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import ContactSupport from "@/components/ui/ContactSupport";
@@ -11,27 +10,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { ArrowLeft, Clock, Mail, MapPin, Phone, Upload } from "lucide-react";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import React from "react";
-
-const contacts = [
-  {
-    icon: <Phone className="w-8 h-8 text-yellow-500" />,
-    title: "Call Support Center 24/7",
-    lines: ["+1 809 120 6705", "+1 809 120 6705"],
-  },
-  {
-    icon: <Mail className="w-8 h-8 text-yellow-500" />,
-    title: "Write To Us",
-    lines: ["info@domain.com", "support@domain.com"],
-  },
-  {
-    icon: <MapPin className="w-8 h-8 text-yellow-500" />,
-    title: "Visit Us",
-    lines: ["2972 Westheimer Rd. Santa Ana, Illinois 85486"],
-  },
-];
 
 const ContactPage = () => {
   return (
@@ -45,9 +26,9 @@ const ContactPage = () => {
           sizes="100vw"
           className="absolute inset-0 w-full h-full object-cover"
         />
-         <div
+        <div
           className="absolute inset-0"
-          style={{ backgroundColor: 'rgba(15, 36, 56, 0.35)' }}
+          style={{ backgroundColor: "rgba(15, 36, 56, 0.35)" }}
         />
         <div className="absolute inset-0 flex items-center">
           <div className="container mx-auto max-w-7xl px-4">

@@ -6,9 +6,13 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Service, services } from "@/app/data/projects";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-
-
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 export default function ServicesSection() {
   return (
@@ -29,74 +33,74 @@ export default function ServicesSection() {
             Our painting & construction services
           </h2>
           <p className="mx-auto mt-4 max-w-3xl text-slate-600 md:text-lg">
-            We specialize in a wide range of painting & construction services, including
-            residential, commercial, and industrial projects.
+            We specialize in a wide range of painting & construction services,
+            including residential, commercial, and industrial projects.
           </p>
         </div>
 
         {/* Cards */}
-         <Carousel
-      opts={{
-        align: "start",
-      }}
-      className="w-full mt-10 px-4"
-    >
-      <CarouselContent>
-        {services.map((s, index) => (
-          <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4">
-            <div className="p-1">
-              <ServiceCard key={index} {...s} />
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious 
-      className="absolute left-6 lg:-left-10 z-10 lg:z-0 top-1/2 -translate-y-1/2
+        <Carousel
+          opts={{
+            align: "start",
+          }}
+          className="w-full mt-10 px-4"
+        >
+          <CarouselContent>
+            {services.map((s, index) => (
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4">
+                <div className="p-1">
+                  <ServiceCard key={index} {...s} />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious
+            className="absolute left-6 lg:-left-10 z-10 lg:z-0 top-1/2 -translate-y-1/2
                    h-12 w-12 rounded-full backdrop-blur-sm text-gray-950
                    shadow-lg ring-1 ring-black/10
                    hover:bg-white hover:shadow-xl
                    focus-visible:ring-2 focus-visible:ring-primary
                    disabled:opacity-50 disabled:cursor-not-allowed"
-      />
-      <CarouselNext 
-      className="absolute right-6 lg:-right-10 z-10 lg:z-0 top-1/2 -translate-y-1/2
+          />
+          <CarouselNext
+            className="absolute right-6 lg:-right-10 z-10 lg:z-0 top-1/2 -translate-y-1/2
                    h-12 w-12 rounded-full backdrop-blur-sm text-gray-950
                    shadow-lg ring-1 ring-black/10
                    hover:bg-white hover:shadow-xl
                    focus-visible:ring-2 focus-visible:ring-primary
                    disabled:opacity-50 disabled:cursor-not-allowed"
-      />
-    </Carousel>
+          />
+        </Carousel>
 
         {/* CTA */}
         <div className="mt-10 flex justify-center md:mt-14">
-          <Link href='/service'>
-          <Button
-            size="lg"
-            className="group relative overflow-hidden rounded-md bg-amber-500 px-6 py-6 text-white text-base hover:bg-amber-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40"
-          >
-            {/* the black wipe */}
-            <span
-              className="pointer-events-none absolute inset-0 left-0 w-0 bg-black transition-[width] duration-400 ease-out group-hover:w-full"
-              aria-hidden="true"
-            />
-            {/* label stays above the wipe */}
-            <span className="relative z-10 flex items-center gap-1.5 transition-colors duration-300 group-hover:text-white">
-              See More
-              <svg
-                className="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </span>
-          </Button>
+          <Link href="/service">
+            <Button
+              size="lg"
+              className="group relative overflow-hidden rounded-md bg-amber-500 px-6 py-6 text-white text-base hover:bg-amber-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40"
+            >
+              {/* the black wipe */}
+              <span
+                className="pointer-events-none absolute inset-0 left-0 w-0 bg-black transition-[width] duration-400 ease-out group-hover:w-full"
+                aria-hidden="true"
+              />
+              {/* label stays above the wipe */}
+              <span className="relative z-10 flex items-center gap-1.5 transition-colors duration-300 group-hover:text-white">
+                See More
+                <svg
+                  className="h-5 w-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </span>
+            </Button>
           </Link>
         </div>
       </div>
@@ -106,13 +110,7 @@ export default function ServicesSection() {
 
 /* -------------------- Card -------------------- */
 
-function ServiceCard({
-  title,
-  image,
-  id,
-  featured,
-  description,
-}: Service) {
+function ServiceCard({ title, image, id, featured, description }: Service) {
   return (
     <Link
       href={`service/${id}`}

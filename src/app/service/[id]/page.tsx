@@ -8,28 +8,8 @@ import { ArrowLeft } from "lucide-react";
 
 import ContactSupport from "@/components/ui/ContactSupport";
 
-type Props = {
-  imageSrc: string;
-  imageAlt?: string;
-  location: string;
-  sector: string; // e.g. "Buildings, Civil"
-  technology: string; // e.g. "Monolithics"
-  scopeOfWork: string; // e.g. "12000+"
-  completionDate: string;
-  intro?: string;
-  body1?: string;
-  heading?: string;
-  body2?: string;
-};
-
-const ServiceDetailsPage = ({
-  intro = "Construction standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-  body1 = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga harum quidem rerum facilis est et expedita distinctio.",
-  heading = "Building better development",
-  body2 = "Aenean sed adipiscing diam donec adipiscing tristique risus. Nunc pulvinar sapien et ligula ullamcorper malesuada. Venenatis urna cursus eget nunc scelerisque viverra mauris in. A cras semper auctor neque vitae tempus.",
-}: Props) => {
+const ServiceDetailsPage = () => {
   const { id } = useParams();
-  console.log("serviceSlug", id);
   const router = useRouter();
 
   const service = services.find((p) => p.id === id);
@@ -99,16 +79,27 @@ const ServiceDetailsPage = ({
             </div>
             {/* Copy blocks */}
             <div className="mt-8 md:mt-10 space-y-6 text-muted-foreground leading-relaxed">
-              <p>{intro}</p>
-              <p>{body1}</p>
+              <p>
+                Construction standard dummy text ever since the 1500s, when an
+                unknown printer took a galley of type and scrambled it to make a
+                type specimen book.
+              </p>
+              <p>
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui
+                blanditiis praesentium voluptatum deleniti atque corrupti quos
+                dolores et quas molestias excepturi sint occaecati cupiditate
+                non provident, similique sunt in culpa qui officia deserunt
+                mollitia animi, id est laborum et dolorum fuga harum quidem
+                rerum facilis est et expedita distinctio.
+              </p>
             </div>
 
             <div className="mt-6 md:mt-8">
               <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-                {heading}
+                {service.title}
               </h2>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                {body2}
+                {service.description}
               </p>
             </div>
           </div>

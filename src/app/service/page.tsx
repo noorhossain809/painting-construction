@@ -4,9 +4,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Service, services } from "@/app/data/projects";
-import { Badge } from "@/components/ui/badge";
 
 export default function ServicesPage() {
   return (
@@ -21,9 +20,9 @@ export default function ServicesPage() {
           sizes="100vw"
           className="object-cover object-center"
         />
-         <div
+        <div
           className="absolute inset-0"
-          style={{ backgroundColor: 'rgba(15, 36, 56, 0.6)' }}
+          style={{ backgroundColor: "rgba(15, 36, 56, 0.6)" }}
         />
         <div className="absolute inset-0 flex items-center">
           <div className="container mx-auto max-w-7xl px-4">

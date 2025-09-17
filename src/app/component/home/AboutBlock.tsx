@@ -3,12 +3,7 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import {
-  CheckCircle2,
-  PhoneCall,
-  ChevronRight,
-  CheckCircle,
-} from "lucide-react";
+import { PhoneCall } from "lucide-react";
 
 export default function AboutBlock() {
   return (
@@ -17,7 +12,8 @@ export default function AboutBlock() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-12">
             <h3 className="text-3xl font-bold text-construction-dark mb-6">
-              Why Choose <span className="bg-yellow-500 p-1">Pro</span>Painting&Construction?
+              Why Choose <span className="bg-yellow-500 p-1">Pro</span>
+              Painting&Construction?
             </h3>
             <div className="space-y-4">
               <div className="flex items-start space-x-4">
@@ -129,17 +125,5 @@ export default function AboutBlock() {
         </div>
       </div>
     </section>
-  );
-}
-
-/* ---------- small helper ---------- */
-function FeatureItem({ children }: { children: React.ReactNode }) {
-  return (
-    <li className="flex items-center gap-3">
-      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-500">
-        <CheckCircle2 className="h-4 w-4 text-white" />
-      </span>
-      <span className="text-base font-medium text-slate-800">{children}</span>
-    </li>
   );
 }

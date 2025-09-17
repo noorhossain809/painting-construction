@@ -28,29 +28,9 @@ type Fact = {
   value: string;
 };
 
-type Props = {
-  imageSrc: string;
-  imageAlt?: string;
-  location: string;
-  sector: string; // e.g. "Buildings, Civil"
-  technology: string; // e.g. "Monolithics"
-  scopeOfWork: string; // e.g. "12000+"
-  completionDate: string;
-  intro?: string;
-  body1?: string;
-  heading?: string;
-  body2?: string;
-};
 
-const PortfolioDetail = ({
-  scopeOfWork = "12000+",
-  intro = "Construction standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-  body1 = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga harum quidem rerum facilis est et expedita distinctio.",
-  heading = "Building better development",
-  body2 = "Aenean sed adipiscing diam donec adipiscing tristique risus. Nunc pulvinar sapien et ligula ullamcorper malesuada. Venenatis urna cursus eget nunc scelerisque viverra mauris in. A cras semper auctor neque vitae tempus.",
-}: Props) => {
+const PortfolioDetail = () => {
   const { id } = useParams();
-  console.log("projectSlug", id);
   const router = useRouter();
 
   const project = PROJECTS.find((p) => p.slug === id);
@@ -69,7 +49,7 @@ const PortfolioDetail = ({
     {
       icon: <Ruler className="h-5 w-5" />,
       label: "Scope Of Work",
-      value: scopeOfWork,
+      value: '12000+',
     },
     {
       icon: <CalendarDays className="h-5 w-5" />,
@@ -179,16 +159,16 @@ const PortfolioDetail = ({
             </div>
             {/* Copy blocks */}
             <div className="mt-8 md:mt-10 space-y-6 text-muted-foreground leading-relaxed">
-              <p>{intro}</p>
-              <p>{body1}</p>
+              <p>Construction standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga harum quidem rerum facilis est et expedita distinctio.</p>
             </div>
 
             <div className="mt-6 md:mt-8">
               <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-                {heading}
+                {project.title}
               </h2>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                {body2}
+                {project.description}
               </p>
             </div>
           </div>
