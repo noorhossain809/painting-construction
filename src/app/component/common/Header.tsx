@@ -11,15 +11,8 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import {
-  CircleCheckIcon,
-  CircleHelpIcon,
-  CircleIcon,
-  Menu as MenuIcon,
-  X as XIcon,
-} from "lucide-react";
+import { Menu as MenuIcon, X as XIcon } from "lucide-react";
 
-// shadcn/ui extras for mobile
 import {
   Sheet,
   SheetContent,
@@ -34,71 +27,55 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-
-const components: { title: string; href: string; description: string }[] = [
-  {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
-  },
-  {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
-    description: "For sighted users to preview content available behind a link.",
-  },
-  {
-    title: "Progress",
-    href: "/docs/primitives/progress",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  },
-  {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  },
-];
+import Image from "next/image";
+import { services } from "@/app/data/projects";
 
 const Header: React.FC = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   return (
-    <header>
-      <nav className="fixed top-0 start-0 z-20 w-full border-b border-gray-200/50 bg-white/80 backdrop-blur-md transition-colors duration-300 dark:border-gray-600/50 dark:bg-gray-900/70">
+    <>
+      <nav className="absolute top-0 start-0 z-30 w-full transition-colors duration-300 bg-transparent">
         <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between px-4 py-3 md:py-4">
           {/* Brand */}
           <Link
             href="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
-            <img
-              src="https://flowbite.com/docs/images/logo.svg"
-              className="h-8 w-8"
-              alt="Flowbite Logo"
-            />
-            <span className="whitespace-nowrap text-2xl font-semibold dark:text-white">
-              Flowbite
-            </span>
+            <Image src="/assets/w__5_-removebg-preview.png" width={100} height={100} alt="web-logo" />
+
           </Link>
 
           {/* Right actions (desktop) */}
           <div className="hidden items-center gap-2 md:flex md:order-2">
-            <Button className="bg-blue-700 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700">
-              Get started
-            </Button>
+            <Link href="/contact">
+              <Button
+                size="lg"
+                className="group relative w-full overflow-hidden rounded-md bg-amber-500 px-6 py-6 text-white text-base hover:bg-amber-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40"
+              >
+                {/* the black wipe */}
+                <span
+                  className="pointer-events-none absolute inset-0 left-0 w-0 bg-black transition-[width] duration-400 ease-out group-hover:w-full"
+                  aria-hidden="true"
+                />
+                {/* label stays above the wipe */}
+                <span className="relative z-10 flex items-center gap-1.5 transition-colors duration-300 group-hover:text-white">
+                  Contact Us
+                  <svg
+                    className="h-5 w-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </span>
+              </Button>
+            </Link>
           </div>
 
           {/* Desktop nav */}
@@ -106,51 +83,70 @@ const Header: React.FC = () => {
             <NavigationMenu viewport={false}>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Home</NavigationMenuTrigger>
+                  <NavigationMenuTrigger>
+                    <Link href="/service">Services</Link>
+                  </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                      <li className="row-span-3">
+                    <ul className="grid gap-2 md:w-[400px] lg:w-[700px] lg:grid-cols-[.75fr_1fr]">
+                      <li className="row-span-4">
                         <NavigationMenuLink asChild>
                           <Link
-                            className="from-muted/50 to-muted flex h-full w-full select-none flex-col justify-end rounded-md bg-linear-to-b p-6 no-underline outline-hidden focus:shadow-md"
-                            href="#"
+                            href="/service"
+                            className="relative h-full w-full select-none rounded-md overflow-hidden no-underline outline-hidden focus:shadow-md"
                           >
-                            <div className="mb-2 mt-4 text-lg font-medium">
-                              shadcn/ui
-                            </div>
-                            <p className="text-sm leading-tight text-muted-foreground">
-                              Beautifully designed components built with
-                              Tailwind CSS.
-                            </p>
+                            <Image
+                              src="/assets/before-after.jpg"
+                              alt="shadcn/ui components preview"
+                              fill
+                              className="object-cover"
+                              priority
+                            />
                           </Link>
                         </NavigationMenuLink>
                       </li>
-                      <ListItem href="/docs" title="Introduction">
-                        Re-usable components built using Radix UI and Tailwind
-                        CSS.
-                      </ListItem>
-                      <ListItem href="/docs/installation" title="Installation">
-                        How to install dependencies and structure your app.
-                      </ListItem>
-                      <ListItem
-                        href="/docs/primitives/typography"
-                        title="Typography"
-                      >
-                        Styles for headings, paragraphs, lists...etc
-                      </ListItem>
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
+                      {services.slice(0, 3).map((service, indx) => (
+                        <ListItem
+                          key={indx}
+                          href={`/service/${service.id}`}
+                          title={service.title}
+                        >
+                          <div className="grid grid-cols-4 gap-0.5">
+                            <div className="col-span-3">
+                              <p>{service.description}</p>
+                            </div>
 
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger>Components</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                      {components.map((c) => (
-                        <ListItem key={c.title} href={c.href} title={c.title}>
-                          {c.description}
+                            <div className=" h-full w-full select-none overflow-hidden no-underline outline-hidden focus:shadow-md">
+                              <Image
+                                src={service.image} // replace with your actual image path
+                                alt="shadcn/ui components preview"
+                                width={80}
+                                height={50}
+                                className=""
+                              />
+                            </div>
+                          </div>
                         </ListItem>
                       ))}
+
+                      <li className="flex justify-end hover:text-yellow-500 hover:font-medium">
+                        <Link href="service">
+                          <div className="flex gap-1 items-center">
+                            <p>See All</p>
+                            <svg
+                              className="h-5 w-5"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <path d="M5 12h14" />
+                              <path d="m12 5 7 7-7 7" />
+                            </svg>
+                          </div>
+                        </Link>
+                      </li>
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
@@ -160,38 +156,22 @@ const Header: React.FC = () => {
                     asChild
                     className={navigationMenuTriggerStyle()}
                   >
-                    <Link href="/docs">Docs</Link>
+                    <Link href="/docs">Location</Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>List</NavigationMenuTrigger>
+                  <NavigationMenuTrigger>
+                    <Link href="/our-work">Our Works</Link>
+                  </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[300px] gap-4">
-                      <li className="space-y-2">
+                    <ul className="grid w-[100px] gap-4">
+                      <li className="space-y-1">
                         <NavigationMenuLink asChild>
-                          <Link href="#">
-                            <div className="font-medium">Components</div>
-                            <div className="text-muted-foreground">
-                              Browse all components in the library.
-                            </div>
-                          </Link>
+                          <Link href="our-work">Completed</Link>
                         </NavigationMenuLink>
                         <NavigationMenuLink asChild>
-                          <Link href="#">
-                            <div className="font-medium">Documentation</div>
-                            <div className="text-muted-foreground">
-                              Learn how to use the library.
-                            </div>
-                          </Link>
-                        </NavigationMenuLink>
-                        <NavigationMenuLink asChild>
-                          <Link href="#">
-                            <div className="font-medium">Blog</div>
-                            <div className="text-muted-foreground">
-                              Read our latest blog posts.
-                            </div>
-                          </Link>
+                          <Link href="#">In Action</Link>
                         </NavigationMenuLink>
                       </li>
                     </ul>
@@ -199,18 +179,18 @@ const Header: React.FC = () => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Simple</NavigationMenuTrigger>
+                  <NavigationMenuTrigger>About Us</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[200px] gap-4">
+                    <ul className="grid w-[100px] gap-4">
                       <li className="space-y-2">
                         <NavigationMenuLink asChild>
-                          <Link href="#">Components</Link>
+                          <Link href="#">About</Link>
                         </NavigationMenuLink>
                         <NavigationMenuLink asChild>
-                          <Link href="#">Documentation</Link>
+                          <Link href="#">Team</Link>
                         </NavigationMenuLink>
                         <NavigationMenuLink asChild>
-                          <Link href="#">Blocks</Link>
+                          <Link href="#">Testimonial</Link>
                         </NavigationMenuLink>
                       </li>
                     </ul>
@@ -218,26 +198,18 @@ const Header: React.FC = () => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>With Icon</NavigationMenuTrigger>
+                  <NavigationMenuTrigger>Newsroom</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[220px] gap-3 py-2">
+                    <ul className="grid w-[100px] gap-3 py-2">
                       <li className="space-y-2">
                         <NavigationMenuLink asChild>
-                          <Link href="#" className="flex items-center gap-2">
-                            <CircleHelpIcon className="h-4 w-4" />
-                            Backlog
+                          <Link href="#" className="">
+                            News
                           </Link>
                         </NavigationMenuLink>
                         <NavigationMenuLink asChild>
-                          <Link href="#" className="flex items-center gap-2">
-                            <CircleIcon className="h-4 w-4" />
-                            To Do
-                          </Link>
-                        </NavigationMenuLink>
-                        <NavigationMenuLink asChild>
-                          <Link href="#" className="flex items-center gap-2">
-                            <CircleCheckIcon className="h-4 w-4" />
-                            Done
+                          <Link href="#" className="">
+                            Awards
                           </Link>
                         </NavigationMenuLink>
                       </li>
@@ -254,7 +226,7 @@ const Header: React.FC = () => {
               <SheetTrigger asChild>
                 <button
                   aria-label={mobileOpen ? "Close menu" : "Open menu"}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-800 dark:focus:ring-gray-700"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-white transition-colors hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-800 dark:focus:ring-gray-700"
                 >
                   {mobileOpen ? (
                     <XIcon className="h-6 w-6 transition-transform duration-300" />
@@ -266,158 +238,176 @@ const Header: React.FC = () => {
               <SheetContent side="left" className="w-[88%] p-0">
                 <SheetHeader className="px-4 py-3 border-b">
                   <SheetTitle className="flex items-center gap-2">
-                    <img
-                      src="https://flowbite.com/docs/images/logo.svg"
-                      alt="logo"
-                      className="h-6 w-6"
-                    />
-                    <span>Flowbite</span>
+                    <Link
+                      href="/"
+                      className="flex items-center space-x-3 rtl:space-x-reverse"
+                    >
+                      <span className="whitespace-nowrap text-2xl font-semibold text-gray-900">
+                        <span className="bg-yellow-500 p-[1px] rounded-md">
+                          PPC
+                        </span>{" "}
+                        ProPaintingConstruction
+                      </span>
+                    </Link>
                   </SheetTitle>
                 </SheetHeader>
 
                 {/* Mobile menu as Accordion */}
                 <div className="px-2 py-2">
                   <Accordion type="multiple" className="w-full">
-                    <AccordionItem value="home">
-                      <AccordionTrigger className="px-2">Home</AccordionTrigger>
+                    <AccordionItem value="components">
+                      <AccordionTrigger className="px-2">
+                        <Link href="/service">Services</Link>
+                      </AccordionTrigger>
                       <AccordionContent className="px-2">
-                        <div className="rounded-md border p-3">
-                          <Link href="#" onClick={() => setMobileOpen(false)}>
-                            <div className="mb-1 text-sm font-medium">
-                              shadcn/ui
-                            </div>
-                            <p className="text-sm text-muted-foreground">
-                              Beautifully designed components built with Tailwind
-                              CSS.
-                            </p>
+                        <ul className="space-y-2">
+                          {services.slice(0, 3).map((service) => (
+                            <MobileItem
+                              key={service.title}
+                              href={`/service/${service.id}`}
+                              title={service.title}
+                              onPick={() => setMobileOpen(false)}
+                            >
+                              <div className="grid grid-cols-4 gap-0.5">
+                                <div className="col-span-3">
+                                  <p>{service.description}</p>
+                                </div>
+                                <div className=" h-full w-full select-none overflow-hidden no-underline outline-hidden focus:shadow-md">
+                                  <Image
+                                    src={service.image} // replace with your actual image path
+                                    alt="shadcn/ui components preview"
+                                    width={80}
+                                    height={50}
+                                    className=""
+                                  />
+                                </div>
+                              </div>
+                            </MobileItem>
+                          ))}
+                        </ul>
+                        <div className="px-2 py-4">
+                          <Link href={`/service`}>
+                            <Button
+                              size="lg"
+                              className="group w-full relative overflow-hidden rounded-md bg-amber-500 px-6 py-6 text-white text-base hover:bg-amber-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40"
+                            >
+                              {/* the black wipe */}
+                              <span
+                                className="pointer-events-none absolute inset-0 left-0 w-0 bg-black transition-[width] duration-400 ease-out group-hover:w-full"
+                                aria-hidden="true"
+                              />
+                              {/* label stays above the wipe */}
+                              <span className="relative z-10 flex items-center gap-1.5 transition-colors duration-300 group-hover:text-white">
+                                See All
+                                <svg
+                                  className="h-5 w-5"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                >
+                                  <path d="M5 12h14" />
+                                  <path d="m12 5 7 7-7 7" />
+                                </svg>
+                              </span>
+                            </Button>
                           </Link>
-                          <ul className="mt-3 space-y-2">
-                            <MobileItem href="/docs" title="Introduction" onPick={() => setMobileOpen(false)}>
-                              Re-usable components built using Radix UI and
-                              Tailwind CSS.
-                            </MobileItem>
-                            <MobileItem
-                              href="/docs/installation"
-                              title="Installation"
-                              onPick={() => setMobileOpen(false)}
-                            >
-                              How to install dependencies and structure your app.
-                            </MobileItem>
-                            <MobileItem
-                              href="/docs/primitives/typography"
-                              title="Typography"
-                              onPick={() => setMobileOpen(false)}
-                            >
-                              Styles for headings, paragraphs, lists...etc
-                            </MobileItem>
-                          </ul>
                         </div>
                       </AccordionContent>
                     </AccordionItem>
 
-                    <AccordionItem value="components">
-                      <AccordionTrigger className="px-2">
-                        Components
-                      </AccordionTrigger>
-                      <AccordionContent className="px-2">
-                        <ul className="space-y-2">
-                          {components.map((c) => (
-                            <MobileItem
-                              key={c.title}
-                              href={c.href}
-                              title={c.title}
-                              onPick={() => setMobileOpen(false)}
-                            >
-                              {c.description}
-                            </MobileItem>
-                          ))}
-                        </ul>
-                      </AccordionContent>
-                    </AccordionItem>
-
                     <AccordionItem value="docs">
-                      <AccordionTrigger className="px-2">Docs</AccordionTrigger>
+                      <AccordionTrigger className="px-2">
+                        Location
+                      </AccordionTrigger>
                       <AccordionContent className="px-2">
                         <Link
                           href="/docs"
                           className="block rounded-md border p-3"
                           onClick={() => setMobileOpen(false)}
                         >
-                          Open documentation
+                          Our Location
                         </Link>
                       </AccordionContent>
                     </AccordionItem>
 
                     <AccordionItem value="list">
-                      <AccordionTrigger className="px-2">List</AccordionTrigger>
+                      <AccordionTrigger className="px-2">
+                        <Link href="/our-work">Our Works</Link>
+                      </AccordionTrigger>
                       <AccordionContent className="px-2">
                         <ul className="space-y-2">
-                          <SimpleLink href="#" onPick={() => setMobileOpen(false)}>
-                            <div className="font-medium">Components</div>
-                            <div className="text-muted-foreground">
-                              Browse all components in the library.
-                            </div>
-                          </SimpleLink>
-                          <SimpleLink href="#" onPick={() => setMobileOpen(false)}>
-                            <div className="font-medium">Documentation</div>
-                            <div className="text-muted-foreground">
-                              Learn how to use the library.
-                            </div>
-                          </SimpleLink>
-                          <SimpleLink href="#" onPick={() => setMobileOpen(false)}>
-                            <div className="font-medium">Blog</div>
-                            <div className="text-muted-foreground">
-                              Read our latest blog posts.
-                            </div>
-                          </SimpleLink>
+                          <Link
+                            href="/docs"
+                            className="block rounded-md border p-3"
+                            onClick={() => setMobileOpen(false)}
+                          >
+                            Completed
+                          </Link>
+                          <Link
+                            href="/docs"
+                            className="block rounded-md border p-3"
+                            onClick={() => setMobileOpen(false)}
+                          >
+                            In Action
+                          </Link>
                         </ul>
                       </AccordionContent>
                     </AccordionItem>
 
                     <AccordionItem value="simple">
-                      <AccordionTrigger className="px-2">Simple</AccordionTrigger>
+                      <AccordionTrigger className="px-2">
+                        About Us
+                      </AccordionTrigger>
                       <AccordionContent className="px-2">
-                        <ul className="space-y-2">
-                          <SimpleLink href="#" onPick={() => setMobileOpen(false)}>
-                            Components
-                          </SimpleLink>
-                          <SimpleLink href="#" onPick={() => setMobileOpen(false)}>
-                            Documentation
-                          </SimpleLink>
-                          <SimpleLink href="#" onPick={() => setMobileOpen(false)}>
-                            Blocks
-                          </SimpleLink>
+                        <ul className="space-y-2 ">
+                          <Link
+                            href="#"
+                            onClick={() => setMobileOpen(false)}
+                            className="block rounded-md border p-3 transition-colors hover:bg-muted/40"
+                          >
+                            About
+                          </Link>
+                          <Link
+                            href="#"
+                            onClick={() => setMobileOpen(false)}
+                            className="block rounded-md border p-3 transition-colors hover:bg-muted/40"
+                          >
+                            Testimonial
+                          </Link>
+                          <Link
+                            href="#"
+                            onClick={() => setMobileOpen(false)}
+                            className="block rounded-md border p-3 transition-colors hover:bg-muted/40"
+                          >
+                            Team
+                          </Link>
                         </ul>
                       </AccordionContent>
                     </AccordionItem>
 
                     <AccordionItem value="with-icon">
                       <AccordionTrigger className="px-2">
-                        With Icon
+                        Newsroom
                       </AccordionTrigger>
                       <AccordionContent className="px-2">
-                        <ul className="space-y-2">
-                          <SimpleLink
+                        <ul className="space-y-2 ">
+                          <Link
                             href="#"
-                            className="flex items-center gap-2"
-                            onPick={() => setMobileOpen(false)}
+                            onClick={() => setMobileOpen(false)}
+                            className="block rounded-md border p-3 transition-colors hover:bg-muted/40"
                           >
-                            <CircleHelpIcon className="h-4 w-4" /> Backlog
-                          </SimpleLink>
-                          <SimpleLink
+                            News
+                          </Link>
+                          <Link
                             href="#"
-                            className="flex items-center gap-2"
-                            onPick={() => setMobileOpen(false)}
+                            onClick={() => setMobileOpen(false)}
+                            className="block rounded-md border p-3 transition-colors hover:bg-muted/40"
                           >
-                            <CircleIcon className="h-4 w-4" /> To Do
-                          </SimpleLink>
-                          <SimpleLink
-                            href="#"
-                            className="flex items-center gap-2"
-                            onPick={() => setMobileOpen(false)}
-                          >
-                            <CircleCheckIcon className="h-4 w-4" /> Done
-                          </SimpleLink>
+                            Awards
+                          </Link>
                         </ul>
                       </AccordionContent>
                     </AccordionItem>
@@ -425,12 +415,34 @@ const Header: React.FC = () => {
 
                   {/* Mobile CTA */}
                   <div className="px-2 py-4">
-                    <Button
-                      className="w-full bg-blue-700 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      Get started
-                    </Button>
+                    <Link href="/contact">
+                      <Button
+                        size="lg"
+                        className="group relative w-full overflow-hidden rounded-md bg-amber-500 px-6 py-6 text-white text-base hover:bg-amber-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40"
+                      >
+                        {/* the black wipe */}
+                        <span
+                          className="pointer-events-none absolute inset-0 left-0 w-0 bg-black transition-[width] duration-400 ease-out group-hover:w-full"
+                          aria-hidden="true"
+                        />
+                        {/* label stays above the wipe */}
+                        <span className="relative z-10 flex items-center gap-1.5 transition-colors duration-300 group-hover:text-white">
+                          Contact Us
+                          <svg
+                            className="h-5 w-5"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                          </svg>
+                        </span>
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </SheetContent>
@@ -438,9 +450,7 @@ const Header: React.FC = () => {
           </div>
         </div>
       </nav>
-      {/* Spacer so content isn’t hidden behind fixed nav */}
-      <div className="h-16 md:h-[72px]" />
-    </header>
+    </>
   );
 };
 
@@ -452,14 +462,22 @@ function ListItem({
   title,
   children,
   href,
+  className = "",
   ...props
 }: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
   return (
-    <li {...props}>
+    // add `group` here so children can respond to hover
+    <li className={`group ${className}`} {...props}>
       <NavigationMenuLink asChild>
-        <Link href={href}>
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="text-sm leading-snug text-muted-foreground line-clamp-2">
+        <Link
+          href={href}
+          className={`block rounded-md border border-transparent p-3 transition-colors hover:text-yellow-500 
+                      hover:border-yellow-400 hover:bg-muted/20`}
+        >
+          <div className="text-sm font-medium leading-none transition-colors ">
+            {title}
+          </div>
+          <p className="text-sm leading-snug line-clamp-2 transition-colors text-muted-foreground ">
             {children}
           </p>
         </Link>
@@ -490,27 +508,5 @@ function MobileItem({
         <p className="text-sm leading-snug text-muted-foreground">{children}</p>
       </Link>
     </li>
-  );
-}
-
-function SimpleLink({
-  href,
-  children,
-  className,
-  onPick,
-}: {
-  href: string;
-  children: React.ReactNode;
-  className?: string;
-  onPick?: () => void;
-}) {
-  return (
-    <Link
-      href={href}
-      className={`block rounded-md border p-3 transition-colors hover:bg-muted/40 ${className ?? ""}`}
-      onClick={onPick}
-    >
-      {children}
-    </Link>
   );
 }

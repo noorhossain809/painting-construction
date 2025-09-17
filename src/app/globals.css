@@ -4,6 +4,7 @@
 @import "swiper/css/navigation";
 @import "swiper/css/pagination";
 @import "swiper/css/effect-fade";
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;500;600&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -114,6 +115,14 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Oswald', sans-serif;
 }
 
 @layer base {

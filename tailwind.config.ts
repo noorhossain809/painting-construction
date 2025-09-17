@@ -31,6 +31,17 @@ const config: Config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      construction: {
+					navy: 'hsl(var(--construction-navy))',
+					orange: 'hsl(var(--construction-orange))',
+					gray: 'hsl(var(--construction-gray))',
+					light: 'hsl(var(--construction-light))'
+				},
+        	boxShadow: {
+				'construction': 'var(--shadow-construction)',
+				'cta': 'var(--shadow-cta)',
+				'card': 'var(--shadow-card)'
+			},
       keyframes: {
         "accordion-down": { from: { height: "0" }, to: { height: "var(--radix-accordion-content-height)" } },
         "accordion-up": { from: { height: "var(--radix-accordion-content-height)" }, to: { height: "0" } },
