@@ -9,10 +9,10 @@ const Portfolio = () => {
     <section id="portfolio" className="py-20 bg-white">
       <div className="max-w-screen-xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#0B2653] mb-4">
             Our <span className="text-yellow-500 p-1">Portfolio</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="md:text-xl text-base text-muted-foreground max-w-3xl mx-auto">
             See the dramatic transformations we&apos;ve created for homeowners
             and businesses throughout the area.
           </p>
@@ -33,7 +33,7 @@ const Portfolio = () => {
               />
               <div className="absolute inset-0 bg-gradient-overlay opacity-50" />
               <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                <h3 className="text-2xl font-bold mb-2">
+                <h3 className="text-2xl font-bold mb-2 ">
                   Complete Home Transformation
                 </h3>
                 <p className="text-lg opacity-90">
@@ -67,7 +67,7 @@ const Portfolio = () => {
                 </div>
               </div>
               <CardContent className="p-6">
-                <h3 className="text-lg font-bold text-foreground mb-2">
+                <h3 className="text-lg font-bold text-[#0B2653] mb-2">
                   {project.title}
                 </h3>
                 <p className="text-muted-foreground">{project.description}</p>
@@ -82,11 +82,11 @@ const Portfolio = () => {
           <Link href="/our-work">
             <Button
               size="lg"
-              className="group relative overflow-hidden rounded-md bg-amber-500 px-6 py-6 text-white text-base hover:bg-amber-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40"
+              className="group relative overflow-hidden rounded-md bg-amber-500 lg:px-6 px-3 lg:py-6 py-3 text-white text-base hover:bg-amber-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40"
             >
               {/* the black wipe */}
               <span
-                className="pointer-events-none absolute inset-0 left-0 w-0 bg-black transition-[width] duration-400 ease-out group-hover:w-full"
+                className="pointer-events-none absolute inset-0 left-0 w-0 bg-[#0B2653] transition-[width] duration-400 ease-out group-hover:w-full"
                 aria-hidden="true"
               />
               {/* label stays above the wipe */}

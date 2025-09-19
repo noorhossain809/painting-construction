@@ -67,7 +67,7 @@ const slides: Slide[] = [
 
 export default function HeroBanner() {
   return (
-    <section className="relative mx-auto min-h-screen overflow-hidden">
+    <section className="relative mx-auto max-h-screen overflow-hidden">
       {/* Custom nav buttons (we style them like the circular button in your image) */}
       <div
         className="custom-prev absolute left-6 top-1/2 z-20 -translate-y-1/2 cursor-pointer"
@@ -149,9 +149,9 @@ export default function HeroBanner() {
                   <p className="mb-4 text-xs font-semibold tracking-[0.2em] text-yellow-400">
                     WELCOME TO BUILTUP
                   </p>
-                  <h1 className="text-4xl font-extrabold leading-tight md:text-6xl">{s.title}</h1>
+                  <h1 className="text-2xl font-bold leading-tight md:text-4xl lg:text-6xl">{s.title}</h1>
                   {s.subtitle && (
-                    <p className="mx-auto mt-6 max-w-3xl text-base text-white/85 md:text-lg">{s.subtitle}</p>
+                    <p className="mx-auto mt-6 max-w-3xl text-sm md:text-base text-white/85 lg:text-lg">{s.subtitle}</p>
                   )}
                   <div className="mt-10 flex items-center justify-center gap-4">
                     <Button asChild size="lg" className="rounded-full px-6">

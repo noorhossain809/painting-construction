@@ -29,7 +29,7 @@ export default function ServicesSection() {
           <div className="mb-2 text-sm font-semibold tracking-[0.18em] text-amber-500">
             OUR SERVICES
           </div>
-          <h2 className="text-4xl font-extrabold leading-tight text-slate-900 md:text-5xl">
+          <h2 className="text-2xl font-extrabold leading-tight text-[#0B2653] md:text-5xl">
             Our painting & construction services
           </h2>
           <p className="mx-auto mt-4 max-w-3xl text-slate-600 md:text-lg">
@@ -77,7 +77,7 @@ export default function ServicesSection() {
           <Link href="/service">
             <Button
               size="lg"
-              className="group relative overflow-hidden rounded-md bg-amber-500 px-6 py-6 text-white text-base hover:bg-amber-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40"
+              className="group relative overflow-hidden rounded-md bg-amber-500 lg:px-6 px-3 py-3 lg:py-6 text-white text-base hover:bg-amber-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40"
             >
               {/* the black wipe */}
               <span

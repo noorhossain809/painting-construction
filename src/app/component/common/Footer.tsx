@@ -1,18 +1,24 @@
 import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#020817] text-white py-12">
+    <footer className=" bg-[url('/assets/city-skiline.png')] bottom-0 top-0 bg-no-repeat text-white lg:bg-cover bg-bottom pt-12 bg-[#0B2653]">
+      
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 bg-orange-400 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">PPC</span>
-              </div>
-              <h3 className="text-xl font-bold">ProPaintingConstruction</h3>
+               <Link
+            href="/"
+            className="flex items-center space-x-3 rtl:space-x-reverse"
+          >
+            <Image src="/assets/propainting_construction_web_logo.png" width={100} height={60} alt="web-logo" />
+
+          </Link>
             </div>
-            <p className="text-white/80 mb-6">
+            <p className="text-white/80 mb-6 md:text-base text-sm">
               Professional construction and painting services with over 25 years of experience. 
               Quality craftsmanship and customer satisfaction guaranteed.
             </p>
@@ -34,7 +40,7 @@ const Footer = () => {
           
           <div>
             <h4 className="text-lg font-semibold mb-6">Services</h4>
-            <ul className="space-y-3 text-white/80">
+            <ul className="space-y-3 text-white/80 md:text-base text-sm">
               <li><a href="#" className="hover:text-orange-400 transition-smooth">General Construction</a></li>
               <li><a href="#" className="hover:text-orange-400 transition-smooth">Professional Painting</a></li>
               <li><a href="#" className="hover:text-orange-400 transition-smooth">Home Renovation</a></li>
@@ -46,7 +52,7 @@ const Footer = () => {
           
           <div>
             <h4 className="text-lg font-semibold mb-6">Quick Links</h4>
-            <ul className="space-y-3 text-white/80">
+            <ul className="space-y-3 text-white/80 md:text-base text-sm">
               <li><a href="#" className="hover:text-orange-400 transition-smooth">About Us</a></li>
               <li><a href="#" className="hover:text-orange-400 transition-smooth">Our Portfolio</a></li>
               <li><a href="#" className="hover:text-orange-400 transition-smooth">Testimonials</a></li>
@@ -58,7 +64,7 @@ const Footer = () => {
           
           <div>
             <h4 className="text-lg font-semibold mb-6">Contact Info</h4>
-            <div className="space-y-4 text-white/80">
+            <div className="space-y-4 text-white/80 md:text-base text-sm">
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-orange-400" />
                 <span>+9175398168</span>
@@ -83,8 +89,8 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-white/10 mt-12 pt-8 text-center text-white/60">
-          <p>&copy; 2025 ProPaintingConstruction. All rights reserved. | Privacy Policy | Terms of Service</p>
+        <div className="border-t border-white/10 mt-12 pt-8 text-center text-white/60 md:text-base text-sm">
+          <p>&copy; 2025 ProPaintingConstruction. All rights reserved.</p>
         </div>
       </div>
     </footer>

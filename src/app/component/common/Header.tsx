@@ -36,7 +36,7 @@ const Header: React.FC = () => {
   return (
     <>
       <nav className="absolute top-0 start-0 z-30 w-full transition-colors duration-300 bg-transparent">
-        <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between px-4 py-3 md:py-4">
+        <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between px-4 py-1 md:py-2">
           {/* Brand */}
           <Link
             href="/"
@@ -184,13 +184,10 @@ const Header: React.FC = () => {
                     <ul className="grid w-[100px] gap-4">
                       <li className="space-y-2">
                         <NavigationMenuLink asChild>
-                          <Link href="#">About</Link>
+                          <Link href="/about-us">About</Link>
                         </NavigationMenuLink>
                         <NavigationMenuLink asChild>
-                          <Link href="#">Team</Link>
-                        </NavigationMenuLink>
-                        <NavigationMenuLink asChild>
-                          <Link href="#">Testimonial</Link>
+                          <Link href="/our-team">Team</Link>
                         </NavigationMenuLink>
                       </li>
                     </ul>

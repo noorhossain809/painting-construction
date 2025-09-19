@@ -7,62 +7,62 @@ import { PhoneCall } from "lucide-react";
 
 export default function AboutBlock() {
   return (
-    <section id="about" className="py-16 md:py-24">
+    <section id="about" className="py-10 md:py-24">
       <div className="mx-auto max-w-screen-2xl px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-12">
-            <h3 className="text-3xl font-bold text-construction-dark mb-6">
+            <h3 className="text-xl md:text-3xl font-bold text-[#0B2653] mb-6 ">
               Why Choose <span className="bg-yellow-500 p-1">Pro</span>
               Painting&Construction?
             </h3>
             <div className="space-y-4">
               <div className="flex items-start space-x-4">
-                <div className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-500">
+                <div className="inline-flex h-6 md:w-6 w-9 items-center justify-center rounded-full bg-amber-500">
                   <span className="text-white text-sm font-bold">✓</span>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-construction-dark mb-2">
+                  <h4 className="text-base md:text-lg font-semibold text-construction-dark mb-2">
                     Expert Craftsmanship
                   </h4>
-                  <p className="text-muted-foreground">
+                  <p className="md:text-base text-sm text-muted-foreground">
                     Our skilled professionals bring decades of experience to
                     every project.
                   </p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
-                <div className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-500">
+                <div className="inline-flex h-6 md:w-6 w-9 items-center justify-center rounded-full bg-amber-500">
                   <span className="text-white text-sm font-bold">✓</span>
                 </div>
                 <div>
                   <h4 className="font-semibold text-construction-dark mb-2">
                     Quality Materials
                   </h4>
-                  <p className="text-muted-foreground">
+                  <p className="md:text-base text-sm text-muted-foreground">
                     We use only the finest materials and latest techniques for
                     lasting results.
                   </p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
-                <div className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-500">
+                <div className="inline-flex h-6 md:w-6 w-9 items-center justify-center rounded-full bg-amber-500">
                   <span className="text-white text-sm font-bold">✓</span>
                 </div>
                 <div>
                   <h4 className="font-semibold text-construction-dark mb-2">
                     On-Time Delivery
                   </h4>
-                  <p className="text-muted-foreground">
+                  <p className="text-sm md:text-base text-muted-foreground">
                     We respect your schedule and complete projects on time,
                     every time.
                   </p>
                 </div>
               </div>
             </div>
-            <div className="mt-16 flex flex-col items-start gap-6 sm:flex-row sm:items-center">
+            <div className="lg:mt-16 mt-6 flex flex-col items-start gap-6 sm:flex-row sm:items-center">
               <Button
                 size="lg"
-                className="group relative overflow-hidden rounded-md bg-amber-500 px-6 py-6 text-white text-base hover:bg-amber-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40"
+                className="group relative overflow-hidden rounded-md bg-amber-500 lg:px-6 px-3 lg:py-6 py-3 text-white text-base hover:bg-amber-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40"
               >
                 {/* the black wipe */}
                 <span
@@ -88,15 +88,15 @@ export default function AboutBlock() {
               </Button>
 
               <div className="flex items-center gap-4">
-                <div className="grid h-12 w-12 place-items-center rounded-full bg-amber-100">
-                  <PhoneCall className="h-6 w-6 text-amber-600" />
+                <div className="grid lg:h-12 h-10 lg:w-12 w-10  place-items-center rounded-full bg-amber-100">
+                  <PhoneCall className="md:h-6 h-5 lg:w-6 w-5 text-amber-600" />
                 </div>
                 <div>
                   <div className="text-sm text-slate-500">
                     call support center 24x7
                   </div>
-                  <div className="text-xl font-semibold tracking-wide text-slate-900">
-                    +1 809 120 6705
+                  <div className="md:text-xl text-lg font-semibold tracking-wide text-slate-900">
+                    +9175398168
                   </div>
                 </div>
               </div>

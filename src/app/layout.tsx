@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Manrope, Open_Sans, Teko } from "next/font/google";
 import "./globals.css";
 import Header from "./component/common/Header";
-import Footer from "./component/home/Footer";
+import Footer from "./component/common/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const geistManrope = Manrope({
+  variable: "--font-geist-manrope",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const geistOpenSans = Open_Sans({
+  variable: "--font-geist-open-sans",
+  subsets: ["latin"],
+});
+const geistTeko = Teko({
+  variable: "--font-geist-teko",
   subsets: ["latin"],
 });
 
@@ -30,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistManrope.variable} ${geistTeko.variable} ${geistOpenSans.variable} antialiased`}
       >
         <Header />
         {children}

@@ -4,7 +4,7 @@ import React from "react";
 const ContactSupport = () => {
   return (
     <div className="relative text-white rounded-2xl overflow-hidden w-full max-w-sm">
-      <div className="absolute inset-0 bg-[#0f2438]"></div>
+      <div className="absolute inset-0 bg-[#0B2653]"></div>
       <div
         className="relative py-4 bg-[url(/assets/service-sidebar-cta-bg.png)] bg-top-right bg-no-repeat container mx-auto px-6 flex flex-col items-center text-center"
         aria-labelledby="support-heading"
