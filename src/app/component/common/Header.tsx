@@ -323,7 +323,7 @@ const Header: React.FC = () => {
                       </AccordionTrigger>
                       <AccordionContent className="px-2">
                         <Link
-                          href="/docs"
+                          href="/"
                           className="block rounded-md border p-3"
                           onClick={() => setMobileOpen(false)}
                         >
@@ -339,14 +339,14 @@ const Header: React.FC = () => {
                       <AccordionContent className="px-2">
                         <ul className="space-y-2">
                           <Link
-                            href="/docs"
+                            href="/our-work"
                             className="block rounded-md border p-3"
                             onClick={() => setMobileOpen(false)}
                           >
                             Completed
                           </Link>
                           <Link
-                            href="/docs"
+                            href="/"
                             className="block rounded-md border p-3"
                             onClick={() => setMobileOpen(false)}
                           >
@@ -358,26 +358,19 @@ const Header: React.FC = () => {
 
                     <AccordionItem value="simple">
                       <AccordionTrigger className="px-2">
-                        About Us
+                        <Link href='/about-us'>About Us</Link>
                       </AccordionTrigger>
                       <AccordionContent className="px-2">
                         <ul className="space-y-2 ">
                           <Link
-                            href="#"
+                            href="/about-us"
                             onClick={() => setMobileOpen(false)}
                             className="block rounded-md border p-3 transition-colors hover:bg-muted/40"
                           >
                             About
                           </Link>
                           <Link
-                            href="#"
-                            onClick={() => setMobileOpen(false)}
-                            className="block rounded-md border p-3 transition-colors hover:bg-muted/40"
-                          >
-                            Testimonial
-                          </Link>
-                          <Link
-                            href="#"
+                            href="/our-team"
                             onClick={() => setMobileOpen(false)}
                             className="block rounded-md border p-3 transition-colors hover:bg-muted/40"
                           >
