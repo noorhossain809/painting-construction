@@ -1,3 +1,13 @@
+// Define the structure for a single blog post
+type BlogPost = {
+  image: string;
+  category: string;
+  date: string;
+  title: string;
+  description: string;
+};
+
+
 export type Project = {
   slug: string; // URL slug, e.g., "school-gym-court"
   title: string; // Display title
@@ -412,4 +422,79 @@ export const services: Service[] = [
     description:
       "Extend the life of your roof with protective roof painting and waterproofing solutions designed for durability and energy efficiency.",
   },
+];
+
+
+// Array of 10 blog post data objects
+export const blogPosts: BlogPost[] = [
+  {
+    image: '/assets/painting/interior-residential-house.jpeg',
+    category: 'Exterior Painting',
+    date: 'September 22, 2025',
+    title: 'Choosing the Best Exterior Paint for New York\'s Four Seasons',
+    description: 'From freezing winters to humid summers, NY weather is tough on exteriors. Pro Painting Construction guides you on durable paints that resist cracking, fading, and moisture. Protect your home\'s curb appeal year-round.'
+  },
+  {
+    image: '/assets/nyc-apartment-interior.jpeg',
+    category: 'Interior Painting',
+    date: 'September 18, 2025',
+    title: 'Interior Paint Ideas to Maximize Space in Your NYC Apartment',
+    description: 'Make your New York apartment feel larger and brighter. We explore paint colors and techniques that create an illusion of space, perfect for city living. Let Pro Painting Construction transform your compact home.'
+  },
+  {
+    image: '/assets/brownstone-renovation.jpg',
+    category: 'Historic Restoration',
+    date: 'September 12, 2025',
+    title: 'A Guide to Brooklyn Brownstone Facade Restoration',
+    description: 'Restoring a historic brownstone requires expertise. Learn about the proper techniques for brick repointing, lintel repair, and choosing historically accurate paint colors. Trust our specialists to preserve your home\'s charm.'
+  },
+  {
+    image: '/assets/modern-kitchen-renovation-cabinets-countertops-installed_857340-10731.jpg',
+    category: 'Home Renovation',
+    date: 'September 5, 2025',
+    title: 'The Complete Guide to Kitchen & Bath Remodeling in New York',
+    description: 'Renovating a kitchen or bath offers the highest ROI for your NY property. Our guide covers budgeting, materials, and navigating co-op board approvals. Start your dream remodel with Pro Painting Construction.'
+  },
+  {
+    image: '/assets/working-with-blueprint.jpg',
+    category: 'Commercial Services',
+    date: 'August 29, 2025',
+    title: 'High-Impact Commercial Painting for NYC Storefronts',
+    description: 'In a city of millions, your storefront needs to stand out. Discover how a professional paint job can increase foot traffic and brand recognition. Pro Painting Construction helps your NY business shine.'
+  },
+  {
+    image: '/assets/basement-waterproofing.jpeg',
+    category: 'Waterproofing',
+    date: 'August 22, 2025',
+    title: 'Basement Waterproofing: A Crucial Step for NY Homeowners',
+    description: 'Prevent costly water damage from melting snow and heavy rains. Learn about interior and exterior basement waterproofing solutions to keep your lower level dry and mold-free. Protect your NY home from the ground up.'
+  },
+  // {
+  //   image: '/images/building-permits.jpg',
+  //   category: 'Project Management',
+  //   date: 'August 15, 2025',
+  //   title: 'Navigating NYC Building Permits: How We Save You Time & Headaches',
+  //   description: 'The NYC Dept. of Buildings can be complex. Pro Painting Construction’s team handles the permits and paperwork, ensuring your renovation project stays compliant, on schedule, and stress-free.'
+  // },
+  // {
+  //   image: '/images/lead-paint.jpg',
+  //   category: 'Safety & Compliance',
+  //   date: 'August 8, 2025',
+  //   title: 'Lead Paint Safety: Our EPA-Certified Process for Older NY Homes',
+  //   description: 'Renovating a pre-1978 home? Lead paint is a serious hazard. Learn about our EPA-certified, lead-safe practices that keep your family safe during a renovation. Trust Pro Painting Construction for a responsible remodel.'
+  // },
+  // {
+  //   image: '/images/winter-damage.jpg',
+  //   category: 'Foundation Repair',
+  //   date: 'August 1, 2025',
+  //   title: 'Protecting Your Foundation from New York\'s Freeze-Thaw Cycle',
+  //   description: 'The constant freezing and thawing in NY winters can crack foundations. Learn to spot the signs of damage and understand the repair process. We ensure your home’s structural integrity for years to come.'
+  // },
+  // {
+  //   image: '/images/energy-efficient.jpg',
+  //   category: 'Green Building',
+  //   date: 'July 25, 2025',
+  //   title: 'Energy-Efficient Remodeling to Lower Your NY Utility Bills',
+  //   description: 'Combat high energy costs with smart construction. We explore the best insulation, windows, and siding materials that will keep your New York home comfortable year-round and reduce your monthly bills.'
+  // }
 ];

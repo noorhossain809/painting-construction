@@ -15,18 +15,14 @@ type Category =
   | "education"
   | "office"
   | "retail"
-  | "aviation"
-  | "civil"
   | "building";
 
 const CATEGORIES: { label: string; value: Category }[] = [
-  { label: "All", value: "all" },
+  { label: "All Projects", value: "all" },
   { label: "Industrial", value: "industrial" },
   { label: "Education", value: "education" },
   { label: "Office", value: "office" },
   { label: "Retail", value: "retail" },
-  { label: "Aviation", value: "aviation" },
-  { label: "Civil", value: "civil" },
   { label: "Buildings", value: "building" },
 ];
 
@@ -89,9 +85,9 @@ export default function PortfolioDetail() {
                   <TabsTrigger
                     key={c.value}
                     value={c.value}
-                    className="p-2 data-[state=active]:bg-yellow-400"
+                    className="p-2 data-[state=active]:bg-yellow-400 font-[Teko] uppercase"
                   >
-                    {c.label.toLowerCase()}
+                    {c.label}
                   </TabsTrigger>
                 ))}
               </TabsList>

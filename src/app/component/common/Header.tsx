@@ -200,7 +200,7 @@ const Header: React.FC = () => {
                     <ul className="grid w-[100px] gap-3 py-2">
                       <li className="space-y-2">
                         <NavigationMenuLink asChild>
-                          <Link href="#" className="">
+                          <Link href="/news" className="">
                             News
                           </Link>
                         </NavigationMenuLink>
@@ -387,7 +387,7 @@ const Header: React.FC = () => {
                       <AccordionContent className="px-2">
                         <ul className="space-y-2 ">
                           <Link
-                            href="#"
+                            href="/news"
                             onClick={() => setMobileOpen(false)}
                             className="block rounded-md border p-3 transition-colors hover:bg-muted/40"
                           >
