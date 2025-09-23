@@ -1,37 +1,25 @@
 // /app/blog/[slug]/page.tsx
-
+"use client";
 import Image from "next/image";
-import { notFound } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import {
-  Facebook,
-  Twitter,
-  Mail,
-  Search,
-  MessageCircle,
-} from "lucide-react";
+import { Facebook, Twitter, Mail, Search, MessageCircle } from "lucide-react";
 import { blogPosts } from "@/app/data/projects";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import ContactSupport from "@/components/ui/ContactSupport";
 
-// generateStaticParams function remains the same...
-export async function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }));
-}
+const BlogPostPageDetails = () => {
+  const { id } = useParams();
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
-  console.log(slug);
-  const currentPost = blogPosts.find((p) => p.slug === slug);
+  const currentPost = blogPosts.find((p) => p.slug === id);
 
   if (!currentPost) {
     notFound();
   }
 
   // Get the 3 latest posts for the sidebar, excluding the current one
-  const latestPosts = blogPosts.filter((p) => p.slug !== slug).slice(0, 3);
-
+  const latestPosts = blogPosts.filter((p) => p.slug !== id).slice(0, 3);
   return (
     <div className="min-h-screen bg-background">
       <section className="relative h-[48vh] md:h-[70vh] overflow-hidden">
@@ -43,7 +31,10 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           sizes="100vw"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 opacity-100" style={{ backgroundColor: 'rgba(15, 36, 56, 0.6)' }} />
+        <div
+          className="absolute inset-0 opacity-100"
+          style={{ backgroundColor: "rgba(15, 36, 56, 0.6)" }}
+        />
         <div className="absolute inset-0 flex items-center">
           <div className="container mx-auto max-w-7xl px-4">
             <div className=" text-white text-center">
@@ -168,4 +159,6 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       </div>
     </div>
   );
-}
+};
+
+export default BlogPostPageDetails;
