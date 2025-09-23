@@ -30,6 +30,9 @@ export default function ServicesPage() {
               <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight text-center uppercase">
                 Service
               </h1>
+              <div className="absolute right-5 bottom-5">
+                <p className="text-gray-200">Home/service</p>
+            </div>
             </div>
           </div>
         </div>

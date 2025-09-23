@@ -1,16 +1,7 @@
-import { Button } from "@/components/ui/button";
+
 import { Card, CardContent } from "@/components/ui/card";
 import ContactForm from "@/components/ui/contactForm";
 import ContactSupport from "@/components/ui/ContactSupport";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import React from "react";
@@ -37,7 +28,9 @@ const ContactPage = () => {
               <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight uppercase">
                 Contact Us
               </h1>
-              <p className="text-muted">Home/contact</p>
+              <div className="absolute right-5 bottom-5">
+                <p className="text-gray-200">Home/contact</p>
+            </div>
             </div>
           </div>
         </div>
