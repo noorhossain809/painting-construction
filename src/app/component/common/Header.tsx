@@ -156,7 +156,7 @@ const Header: React.FC = () => {
                     asChild
                     className={navigationMenuTriggerStyle()}
                   >
-                    <Link href="/docs">Location</Link>
+                    <Link href="/our-location">Location</Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
 
@@ -202,11 +202,6 @@ const Header: React.FC = () => {
                         <NavigationMenuLink asChild>
                           <Link href="/news" className="">
                             News
-                          </Link>
-                        </NavigationMenuLink>
-                        <NavigationMenuLink asChild>
-                          <Link href="#" className="">
-                            Awards
                           </Link>
                         </NavigationMenuLink>
                       </li>
@@ -392,13 +387,6 @@ const Header: React.FC = () => {
                             className="block rounded-md border p-3 transition-colors hover:bg-muted/40"
                           >
                             News
-                          </Link>
-                          <Link
-                            href="#"
-                            onClick={() => setMobileOpen(false)}
-                            className="block rounded-md border p-3 transition-colors hover:bg-muted/40"
-                          >
-                            Awards
                           </Link>
                         </ul>
                       </AccordionContent>

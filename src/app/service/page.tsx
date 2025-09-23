@@ -13,7 +13,7 @@ export default function ServicesPage() {
       {/* Hero */}
       <section className="relative h-[48vh] md:h-[75vh] overflow-hidden">
         <Image
-          src="/assets/low-angle-view-cranes-incomplete-buildings-against-clear-sky_1048944-29913653.jpg" // or "sandbox:/mnt/data/c49ceef7-229f-429e-ad17-b22dba1a879e.png"
+          src="/assets/residential-building-wooden-construction-job.jpg" // or "sandbox:/mnt/data/c49ceef7-229f-429e-ad17-b22dba1a879e.png"
           alt="before-after"
           fill
           priority
@@ -97,7 +97,7 @@ export default function ServicesPage() {
 
             <h2
               id="what-we-do"
-              className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-slate-900"
+              className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-[#0B2653]"
             >
               Building the future on a <br className="hidden md:inline" />
               foundation of excellence
@@ -121,7 +121,7 @@ export default function ServicesPage() {
             ].map((stat, i) => (
               <div
                 key={i}
-                className="flex flex-col items-center justify-center rounded-2xl bg-[#020817] text-white p-6 sm:p-8 shadow-sm min-h-[180px]"
+                className="flex flex-col items-center justify-center rounded-2xl bg-yellow-600 text-white p-6 sm:p-8 shadow-sm min-h-[180px]"
                 role="region"
                 aria-labelledby={`stat-${i}-label`}
               >

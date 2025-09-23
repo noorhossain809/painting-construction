@@ -1,4 +1,5 @@
 
+import { RealitySection } from "@/components/ui/RealitySection";
 import AboutBlock from "./component/home/AboutBlock";
 import Contact from "./component/home/Contact";
 import HeroBanner from "./component/home/HeroBanner";
@@ -13,6 +14,7 @@ export default function Home() {
       <AboutBlock />
       <ServicesSection />
       <Portfolio />
+      <RealitySection />
       <Contact />
     </main>
   );

@@ -1,10 +1,12 @@
 // Define the structure for a single blog post
-type BlogPost = {
+export type BlogPost = {
   image: string;
   category: string;
   date: string;
   title: string;
-  description: string;
+  slug: string;
+  description:string;
+  content: string;
 };
 
 
@@ -426,75 +428,137 @@ export const services: Service[] = [
 
 
 // Array of 10 blog post data objects
+
+
 export const blogPosts: BlogPost[] = [
   {
     image: '/assets/painting/interior-residential-house.jpeg',
     category: 'Exterior Painting',
     date: 'September 22, 2025',
     title: 'Choosing the Best Exterior Paint for New York\'s Four Seasons',
-    description: 'From freezing winters to humid summers, NY weather is tough on exteriors. Pro Painting Construction guides you on durable paints that resist cracking, fading, and moisture. Protect your home\'s curb appeal year-round.'
+    slug: 'choosing-best-exterior-paint-new-york',
+    description: 'From freezing winters to humid summers, NY weather is tough on exteriors. Pro Painting Construction guides you on durable paints that resist cracking, fading, and moisture.',
+    content: `A high-quality exterior paint job is your home's first line of defense against the demanding New York climate. The key to a lasting finish isn't just the paint itself, but the **preparation**. Our process always begins with a thorough power washing to remove dirt, mildew, and loose paint. We then scrape, sand, and prime any bare spots to create a perfect surface for adhesion.
+
+Choosing the right paint is crucial. We typically recommend a **100% acrylic latex paint** for its flexibility, which allows it to expand and contract with temperature fluctuations, preventing cracking and peeling during harsh winters and hot summers. This type of paint is also breathable, allowing moisture to escape from within the walls, which is essential for preventing blisters.
+
+Finally, professional application makes all the difference. We apply paint under optimal weather conditions, avoiding direct sunlight and high humidity to ensure proper curing. Two full coats are our standard, guaranteeing a rich, even color and a durable shell that will protect your investment and boost your home's curb appeal for years to come.`
   },
   {
     image: '/assets/nyc-apartment-interior.jpeg',
     category: 'Interior Painting',
     date: 'September 18, 2025',
     title: 'Interior Paint Ideas to Maximize Space in Your NYC Apartment',
-    description: 'Make your New York apartment feel larger and brighter. We explore paint colors and techniques that create an illusion of space, perfect for city living. Let Pro Painting Construction transform your compact home.'
+    slug: 'interior-paint-ideas-maximize-space-nyc',
+    description: 'Make your New York apartment feel larger and brighter. We explore paint colors and techniques that create an illusion of space, perfect for city living.',
+    content: `In New York City, space is the ultimate luxury. While you can't add square footage with a paintbrush, you can create a powerful illusion of a larger, more open area. The most effective strategy is to use **light and neutral colors**. Shades like off-white, light gray, and soft beige are excellent at reflecting natural light, instantly making a room feel more airy and spacious.
+
+The **finish** of the paint also plays a significant role. An eggshell or satin finish has a slight sheen that helps bounce light around the room more effectively than a flat or matte finish. This is particularly useful in hallways and rooms with limited natural light. For an extra trick, consider painting the ceiling a shade of white that is even lighter than the walls to create a sense of height.
+
+Don't forget the power of a **monochromatic color scheme**. Painting the walls, trim, and even doors in different shades of the same light color creates a seamless, uncluttered look. This technique minimizes visual breaks, tricking the eye into seeing one large, continuous space. It’s a sophisticated approach that brings tranquility and elegance to compact city living.`
   },
   {
-    image: '/assets/brownstone-renovation.jpg',
+     image: '/assets/brownstone-renovation.jpg',
     category: 'Historic Restoration',
     date: 'September 12, 2025',
     title: 'A Guide to Brooklyn Brownstone Facade Restoration',
-    description: 'Restoring a historic brownstone requires expertise. Learn about the proper techniques for brick repointing, lintel repair, and choosing historically accurate paint colors. Trust our specialists to preserve your home\'s charm.'
+    slug: 'guide-brooklyn-brownstone-facade-restoration',
+    description: 'Restoring a historic brownstone requires expertise. Learn about brick repointing, lintel repair, and choosing historically accurate paint colors.',
+    content: `Owning a brownstone in Brooklyn is a dream for many, but maintaining its historic facade is a significant responsibility. The key to a successful restoration lies in understanding the unique materials and techniques required. One of the most critical aspects is **brick repointing**. Over time, the mortar between the bricks can decay. It's crucial to use a lime-based mortar that matches the original composition, as modern Portland cement is too hard and can damage the soft, historic bricks.
+
+Equally important is the repair of stone **lintels and sills** above windows and doors. Cracks or spalling in these elements can lead to water infiltration and further structural damage. Our specialists carefully assess the damage and use appropriate restoration methods to preserve these character-defining features.
+
+Navigating the regulations of the **Landmarks Preservation Commission (LPC)** is another vital part of the process. Any exterior work on a landmarked brownstone must be approved to ensure it aligns with the historic character of the building and the neighborhood. We have extensive experience with the LPC approval process, ensuring your project is both beautiful and compliant.`
   },
   {
     image: '/assets/modern-kitchen-renovation-cabinets-countertops-installed_857340-10731.jpg',
     category: 'Home Renovation',
     date: 'September 5, 2025',
     title: 'The Complete Guide to Kitchen & Bath Remodeling in New York',
-    description: 'Renovating a kitchen or bath offers the highest ROI for your NY property. Our guide covers budgeting, materials, and navigating co-op board approvals. Start your dream remodel with Pro Painting Construction.'
+    slug: 'complete-guide-kitchen-bath-remodeling-ny',
+    description: 'Renovating a kitchen or bath offers the highest ROI for your NY property. Our guide covers budgeting, materials, and navigating co-op board approvals.',
+    content: `A kitchen or bathroom remodel is one of the most valuable investments you can make in your New York property. For kitchens, the focus is on creating a space that is both beautiful and highly functional. This means prioritizing smart storage solutions, durable countertops like **quartz**, and an efficient layout. In a city where space is at a premium, custom cabinetry that reaches the ceiling can make a world of difference.
+
+In bathrooms, **waterproofing** is the single most important aspect of the renovation. Proper installation of a waterproof membrane in shower areas is non-negotiable to prevent leaks and mold issues down the line. Material choices like large-format porcelain tiles can minimize grout lines, making the space easier to clean and feel more expansive.
+
+For those living in co-ops or condos, navigating the **alteration agreement** and getting board approval is a critical first step. This process can be complex, often requiring detailed plans from a licensed architect or engineer. Our team is experienced in preparing these submission packages, ensuring your project gets approved without unnecessary delays.`
   },
   {
     image: '/assets/working-with-blueprint.jpg',
     category: 'Commercial Services',
     date: 'August 29, 2025',
     title: 'High-Impact Commercial Painting for NYC Storefronts',
-    description: 'In a city of millions, your storefront needs to stand out. Discover how a professional paint job can increase foot traffic and brand recognition. Pro Painting Construction helps your NY business shine.'
+    slug: 'high-impact-commercial-painting-nyc-storefronts',
+    description: 'In a city of millions, your storefront needs to stand out. Discover how a professional paint job can increase foot traffic and brand recognition.',
+    content: `In the competitive landscape of New York City, your storefront is more than just an entrance—it's your most important marketing tool. A clean, professional, and eye-catching exterior can significantly **increase foot traffic** and make your business appear more trustworthy and successful. Faded, chipping paint sends the wrong message to potential customers before they even step inside.
+
+The choice of paint and color is a strategic business decision. Your exterior colors should align with your **brand identity**, creating a cohesive and memorable look. Beyond aesthetics, using high-quality, durable paint is essential. We use specialized commercial-grade paints that are designed to withstand high traffic, harsh weather, and the general wear and tear of a busy urban environment.
+
+A professional paint job also shows you care about your community and your property. It contributes to a cleaner, more vibrant streetscape, which benefits everyone. From meticulous prep work to a flawless final coat, Pro Painting Construction ensures your business puts its best face forward.`
   },
   {
-    image: '/assets/basement-waterproofing.jpeg',
+   image: '/assets/basement-waterproofing.jpeg',
     category: 'Waterproofing',
     date: 'August 22, 2025',
     title: 'Basement Waterproofing: A Crucial Step for NY Homeowners',
-    description: 'Prevent costly water damage from melting snow and heavy rains. Learn about interior and exterior basement waterproofing solutions to keep your lower level dry and mold-free. Protect your NY home from the ground up.'
+    slug: 'basement-waterproofing-ny-homeowners',
+    description: 'Prevent costly water damage from melting snow and heavy rains. Learn about interior and exterior waterproofing solutions to keep your lower level dry and mold-free.',
+    content: `For New York homeowners, a wet basement is a common and serious problem. Water can enter through cracks in the foundation, porous concrete, or improperly sealed joints, leading to mold, mildew, and costly structural damage. Effective **basement waterproofing** is not a luxury; it's an essential investment in the health and longevity of your home.
+
+There are two primary approaches: **interior and exterior waterproofing**. Interior solutions involve sealing walls with waterproof coatings, managing water with systems like French drains, and installing a sump pump to actively remove water that enters. This is often a more cost-effective method for managing minor water seepage.
+
+For more serious water intrusion issues, **exterior waterproofing** is the most comprehensive solution. This involves excavating the soil around the foundation, applying a waterproof membrane to the exterior walls, and installing a new drainage system. While more intensive, this method stops water at the source, preventing it from ever touching your foundation walls. Our experts can assess your specific situation and recommend the most effective solution.`
   },
-  // {
-  //   image: '/images/building-permits.jpg',
-  //   category: 'Project Management',
-  //   date: 'August 15, 2025',
-  //   title: 'Navigating NYC Building Permits: How We Save You Time & Headaches',
-  //   description: 'The NYC Dept. of Buildings can be complex. Pro Painting Construction’s team handles the permits and paperwork, ensuring your renovation project stays compliant, on schedule, and stress-free.'
-  // },
-  // {
-  //   image: '/images/lead-paint.jpg',
-  //   category: 'Safety & Compliance',
-  //   date: 'August 8, 2025',
-  //   title: 'Lead Paint Safety: Our EPA-Certified Process for Older NY Homes',
-  //   description: 'Renovating a pre-1978 home? Lead paint is a serious hazard. Learn about our EPA-certified, lead-safe practices that keep your family safe during a renovation. Trust Pro Painting Construction for a responsible remodel.'
-  // },
-  // {
-  //   image: '/images/winter-damage.jpg',
-  //   category: 'Foundation Repair',
-  //   date: 'August 1, 2025',
-  //   title: 'Protecting Your Foundation from New York\'s Freeze-Thaw Cycle',
-  //   description: 'The constant freezing and thawing in NY winters can crack foundations. Learn to spot the signs of damage and understand the repair process. We ensure your home’s structural integrity for years to come.'
-  // },
-  // {
-  //   image: '/images/energy-efficient.jpg',
-  //   category: 'Green Building',
-  //   date: 'July 25, 2025',
-  //   title: 'Energy-Efficient Remodeling to Lower Your NY Utility Bills',
-  //   description: 'Combat high energy costs with smart construction. We explore the best insulation, windows, and siding materials that will keep your New York home comfortable year-round and reduce your monthly bills.'
-  // }
+//   {
+//     image: '/images/building-permits.jpg',
+//     category: 'Project Management',
+//     date: 'August 15, 2025',
+//     title: 'Navigating NYC Building Permits: How We Save You Time & Headaches',
+//     slug: 'navigating-nyc-building-permits',
+//     description: 'The NYC Dept. of Buildings can be complex. Pro Painting Construction’s team handles the permits and paperwork, ensuring your renovation project stays compliant and on schedule.',
+//     content: `Any significant renovation project in New York City requires navigating the complex world of the **Department of Buildings (DOB)**. Attempting to manage this process without experience can lead to long delays, costly violations, and immense frustration. Understanding the types of permits, such as an ALT1 or ALT2, is crucial for ensuring your project is legal and compliant from the start.
+
+// Our project management service is designed to handle this entire process for you. We work with licensed architects and engineers to prepare and file all necessary plans and paperwork. We act as your liaison with the DOB, responding to inquiries and managing inspections to keep the project moving forward. Our expertise helps to **avoid common pitfalls** that can derail a project.
+
+// By entrusting us with your project management, you're not just hiring a contractor; you're hiring a partner who will protect your interests. We ensure that every aspect of the job is properly documented and approved, giving you peace of mind and saving you from the stress of bureaucratic headaches. This allows you to focus on the exciting aspects of your renovation while we handle the red tape.`
+//   },
+//   {
+//     image: '/images/lead-paint.jpg',
+//     category: 'Safety & Compliance',
+//     date: 'August 8, 2025',
+//     title: 'Lead Paint Safety: Our EPA-Certified Process for Older NY Homes',
+//     slug: 'lead-paint-safety-epa-certified-process',
+//     description: 'Renovating a pre-1978 home? Lead paint is a serious hazard. Learn about our EPA-certified, lead-safe practices that keep your family safe during a renovation.',
+//     content: `If your New York home was built before 1978, there is a high probability that it contains lead-based paint. When disturbed during renovation, lead dust can become airborne, posing a serious health risk, especially to children and pregnant women. As an **EPA Lead-Safe Certified Firm**, Pro Painting Construction is trained and equipped to handle these situations safely and responsibly.
+
+// Our process follows the strict guidelines of the EPA's **Renovation, Repair, and Painting (RRP) Rule**. This begins with containing the work area using plastic sheeting to prevent dust from spreading to other parts of your home. We use specialized tools with HEPA vacuum attachments to minimize dust creation during sanding and demolition.
+
+// After the work is complete, we perform a thorough cleanup using HEPA vacuums and wet-wiping techniques to remove any remaining lead dust from the work area. We then dispose of all contaminated materials in accordance with federal and local regulations. Choosing a certified firm isn't just a good idea—it's the law, and it's the only way to ensure your family's safety during the renovation of an older home.`
+//   },
+//   {
+//     image: '/images/winter-damage.jpg',
+//     category: 'Foundation Repair',
+//     date: 'August 1, 2025',
+//     title: 'Protecting Your Foundation from New York\'s Freeze-Thaw Cycle',
+//     slug: 'protecting-foundation-from-ny-freeze-thaw-cycle',
+//     description: 'The constant freezing and thawing in NY winters can crack foundations. Learn to spot the signs of damage and understand the repair process.',
+//     content: `The relentless **freeze-thaw cycle** during New York winters is a primary cause of foundation damage. When moisture in the soil freezes, it expands, exerting immense pressure on your foundation walls. When it thaws, the soil contracts, and this constant movement can lead to cracks and structural instability over time.
+
+// It's important for homeowners to be able to identify the warning signs of foundation issues. Look for **hairline cracks** in your basement walls, doors or windows that stick or don't close properly, and sloping floors. While small, vertical hairline cracks are often due to normal concrete curing, horizontal or "stair-step" cracks in a block foundation can indicate serious hydrostatic pressure.
+
+// When damage is identified, there are several effective repair methods. For smaller cracks, **epoxy or polyurethane injections** can seal the crack and prevent water intrusion. For more significant bowing or movement in walls, **carbon fiber straps** can be applied to stabilize the wall and prevent further shifting. A professional assessment is crucial to determine the correct repair strategy for your home.`
+//   },
+//   {
+//     image: '/images/energy-efficient.jpg',
+//     category: 'Green Building',
+//     date: 'July 25, 2025',
+//     title: 'Energy-Efficient Remodeling to Lower Your NY Utility Bills',
+//     slug: 'energy-efficient-remodeling-lower-ny-utility-bills',
+//     description: 'Combat high energy costs with smart construction. We explore the best insulation, windows, and siding materials that will keep your New York home comfortable year-round.',
+//     content: `With the high cost of heating and cooling in New York, an **energy-efficient remodel** is an investment that pays for itself. The most significant impact comes from improving your home's thermal envelope—its ability to resist air and heat transfer. This starts with proper **air sealing** to close up small gaps and cracks around windows, doors, and utility penetrations.
+
+// Upgrading your **insulation** is the next critical step. Many older homes are under-insulated. Adding insulation to your attic and walls to meet modern R-value recommendations can drastically reduce your heating and cooling needs. Spray foam insulation is an excellent option as it both insulates and air-seals in one step.
+
+// Finally, replacing old, single-pane windows with modern, **ENERGY STAR®-rated windows** with Low-E (low-emissivity) glass can make a huge difference. These windows have a microscopic, invisible coating that reflects infrared heat, keeping your home warmer in the winter and cooler in the summer. These upgrades not only save you money but also create a more comfortable, consistent living environment year-round.`
+//   }
 ];

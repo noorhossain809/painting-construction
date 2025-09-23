@@ -39,7 +39,7 @@ export default function TeamSection() {
     <div min-h-screen bg-background>
       <div className="relative h-[48vh] md:h-[70vh] overflow-hidden">
         <Image
-          src="/assets/mobile-engineers_1098-15445.jpg"
+          src="/assets/shot-of-a-group-of-builders-having-a-meeting-at-a-construction-site.jpg"
           alt="before-after"
           fill
           priority
@@ -47,7 +47,7 @@ export default function TeamSection() {
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 opacity-90"
           style={{ backgroundColor: "rgba(15, 36, 56, 0.35)" }}
         />
         <div className="absolute inset-0 flex items-center">
@@ -56,7 +56,7 @@ export default function TeamSection() {
               <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight uppercase">
                 Our Team
               </h1>
-              <p className="text-muted">Home/our-team</p>
+              <p className="text-muted">It takes two flints to make a fire.</p>
             </div>
           </div>
         </div>

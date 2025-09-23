@@ -35,16 +35,16 @@ const ServiceDetailsPage = () => {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden">
         <Image
-          src="/assets/before-after.jpg"
+          src="/assets/construction-business-concept.jpg"
           fill
           alt={service?.title || ""}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
-        <div className="absolute inset-0 flex items-center">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl text-white">
-              <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+        <div className="absolute inset-0 opacity-100" style={{ backgroundColor: 'rgba(15, 36, 56, 0.6)' }} />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="container mx-auto px-4 max-w-3xl">
+            <div className="flex flex-col justify-center items-center text-white text-center">
+              <h1 className="text-5xl md:text-7xl font-semibold mb-6 leading-tight">
                 {service?.title}
               </h1>
               <p className="text-xl md:text-2xl opacity-90 leading-relaxed mb-8">

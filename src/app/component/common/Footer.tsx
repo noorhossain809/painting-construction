@@ -41,24 +41,22 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-6">Services</h4>
             <ul className="space-y-3 text-white/80 md:text-base text-sm">
-              <li><a href="#" className="hover:text-orange-400 transition-smooth">General Construction</a></li>
-              <li><a href="#" className="hover:text-orange-400 transition-smooth">Professional Painting</a></li>
-              <li><a href="#" className="hover:text-orange-400 transition-smooth">Home Renovation</a></li>
-              <li><a href="#" className="hover:text-orange-400 transition-smooth">Commercial Projects</a></li>
-              <li><a href="#" className="hover:text-orange-400 transition-smooth">Repairs & Maintenance</a></li>
-              <li><a href="#" className="hover:text-orange-400 transition-smooth">Specialty Finishes</a></li>
+              <li><Link href="/service/building-maintenance-repairs" className="hover:text-orange-400 transition-smooth">General Construction</Link></li>
+              <li><Link href="/service/residential-commercial-painting" className="hover:text-orange-400 transition-smooth">Professional Painting</Link></li>
+              <li><Link href="/service/flooring-installation-renovation" className="hover:text-orange-400 transition-smooth">Home Renovation</Link></li>
+              <li><Link href="/service/building-renovation-remodeling" className="hover:text-orange-400 transition-smooth">Commercial Projects</Link></li>
+              <li><Link href="/service/plastering-wall-finishing" className="hover:text-orange-400 transition-smooth">Repairs & Maintenance</Link></li>
             </ul>
           </div>
           
           <div>
             <h4 className="text-lg font-semibold mb-6">Quick Links</h4>
             <ul className="space-y-3 text-white/80 md:text-base text-sm">
-              <li><a href="#" className="hover:text-orange-400 transition-smooth">About Us</a></li>
-              <li><a href="#" className="hover:text-orange-400 transition-smooth">Our Portfolio</a></li>
-              <li><a href="#" className="hover:text-orange-400 transition-smooth">Testimonials</a></li>
-              <li><a href="#" className="hover:text-orange-400 transition-smooth">Free Quote</a></li>
-              <li><a href="#" className="hover:text-orange-400 transition-smooth">Contact</a></li>
-              <li><a href="#" className="hover:text-orange-400 transition-smooth">Emergency Services</a></li>
+              <li><Link href="/about-us" className="hover:text-orange-400 transition-smooth">About Us</Link></li>
+              <li><Link href="/our-work" className="hover:text-orange-400 transition-smooth">Our Portfolio</Link></li>
+              <li><Link href="/service" className="hover:text-orange-400 transition-smooth">Service</Link></li>
+              <li><Link href="/our-team" className="hover:text-orange-400 transition-smooth">Our Team</Link></li>
+              <li><Link href="/contact" className="hover:text-orange-400 transition-smooth">Contact</Link></li>
             </ul>
           </div>
           
@@ -82,7 +80,7 @@ const Footer = () => {
             <div className="mt-6 p-4 bg-white/5 rounded-lg">
               <h5 className="font-semibold mb-2">Licensed & Insured</h5>
               <p className="text-sm text-white/70">
-                License #: CON-2024-12345<br />
+                License #: 2105436-DCA<br />
                 Fully insured for your protection
               </p>
             </div>

@@ -126,6 +126,16 @@ h1, h2, h3, h5, h6 {
   font-family: 'Teko', sans-serif;
 }
 
+.swiper-pagination-bullet-active {
+  background-color: #ebaf18 !important; /* !important to override default styles */
+}
+
+/* Sets the color of the inactive pagination dots */
+.swiper-pagination-bullet {
+  background-color: #FBBF24 !important;
+  opacity: 0.5; /* Makes inactive dots slightly transparent */
+}
+
 
 @layer base {
   * {
