@@ -1,22 +1,33 @@
+"use client";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { PROJECTS } from "@/app/data/projects";
+import { motion } from "framer-motion";
 
 const Portfolio = () => {
   return (
     <section id="portfolio" className="py-20 bg-white">
       <div className="max-w-screen-xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0B2653] mb-4">
-            Our <span className="text-yellow-500 p-1">Portfolio</span>
-          </h2>
-          <p className="md:text-xl text-base text-muted-foreground max-w-3xl mx-auto">
-            See the dramatic transformations we&apos;ve created for homeowners
-            and businesses throughout the area.
-          </p>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 80 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.6, ease: [0.42, 0, 0.58, 1] }}
+          className="text-center"
+        >
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#0B2653] mb-4">
+              Our <span className="text-yellow-500 p-1">Portfolio</span>
+            </h2>
+            <p className="md:text-xl text-base text-muted-foreground max-w-3xl mx-auto">
+              See the dramatic transformations we&apos;ve created for homeowners
+              and businesses throughout the area.
+            </p>
+          </div>
+        </motion.div>
 
         {/* Featured Before/After */}
         <div className="mb-16">
@@ -49,30 +60,30 @@ const Portfolio = () => {
           {PROJECTS.slice(0, 6).map((project, index) => (
             <Link href={`/our-work/${project.slug}`} key={index}>
               <Card
-              key={index}
-              className="group p-0 overflow-hidden hover:shadow-sky-50 transition-all duration-300 border-0 shadow "
-            >
-              <div className="relative h-48">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="w-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  priority
-                />
-                <div className="absolute top-4 left-4">
-                  <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
-                    {project.type}
-                  </span>
+                key={index}
+                className="group p-0 overflow-hidden hover:shadow-sky-50 transition-all duration-300 border-0 shadow "
+              >
+                <div className="relative h-48">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    priority
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
+                      {project.type}
+                    </span>
+                  </div>
                 </div>
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-lg font-bold text-[#0B2653] mb-2">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground">{project.description}</p>
-              </CardContent>
-            </Card>
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-bold text-[#0B2653] mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-muted-foreground">{project.description}</p>
+                </CardContent>
+              </Card>
             </Link>
           ))}
         </div>

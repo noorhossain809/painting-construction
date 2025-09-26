@@ -13,6 +13,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { motion } from "framer-motion";
 
 export default function ServicesSection() {
   return (
@@ -25,7 +26,13 @@ export default function ServicesSection() {
 
       <div className="relative mx-auto max-w-screen-2xl px-4">
         {/* Section header */}
-        <div className="text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.6, ease: [0.42, 0, 0.58, 1] }}
+          className="text-center"
+        >
           <div className="mb-2 text-sm font-semibold tracking-[0.18em] text-amber-500">
             OUR SERVICES
           </div>
@@ -36,7 +43,7 @@ export default function ServicesSection() {
             We specialize in a wide range of painting & construction services,
             including residential, commercial, and industrial projects.
           </p>
-        </div>
+        </motion.div>
 
         {/* Cards */}
         <Carousel
@@ -116,8 +123,13 @@ function ServiceCard({ title, image, id, featured, description }: Service) {
       href={`service/${id}`}
       className="group relative block overflow-hidden rounded-[28px] shadow-sm ring-1 ring-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
     >
-      {/* Background */}
-      <div className="absolute inset-0">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, ease: [0.42, 0, 0.58, 1] }} // cubic-bezier for TS
+        className="absolute inset-0"
+      >
         <Image
           src={image}
           alt={title}
@@ -127,27 +139,24 @@ function ServiceCard({ title, image, id, featured, description }: Service) {
           priority={featured}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-black/0" />
-      </div>
+      </motion.div>
 
-      {/* Caption area anchored to bottom */}
       <div className="relative z-10 flex h-[440px] items-end p-6 md:p-7">
         <div className="w-full text-white">
-          {/* Title row — stays visible at bottom */}
           <div className="flex items-center gap-3">
             <h3
               className="
-    text-xl font-semibold drop-shadow-sm md:text-2xl
-    leading-tight
-    transform transition-all duration-1000 ease-out
-    group-hover:translate-y-[-4px] group-hover:opacity-100
-    opacity-90
-  "
+              text-xl font-semibold drop-shadow-sm md:text-2xl
+              leading-tight
+              transform transition-all duration-1000 ease-out
+              group-hover:translate-y-[-4px] group-hover:opacity-100
+              opacity-90
+            "
             >
               {title}
             </h3>
           </div>
 
-          {/* sliding panel: hidden at rest, grows and fades in on hover */}
           {featured && description && (
             <div
               className="

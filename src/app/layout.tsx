@@ -3,6 +3,8 @@ import { Manrope, Open_Sans, Teko } from "next/font/google";
 import "./globals.css";
 import Header from "./component/common/Header";
 import Footer from "./component/common/Footer";
+import MotionLayout from "./MotionLayout";
+
 
 const geistManrope = Manrope({
   variable: "--font-geist-manrope",
@@ -37,7 +39,8 @@ export default function RootLayout({
         className={`${geistManrope.variable} ${geistTeko.variable} ${geistOpenSans.variable} antialiased`}
       >
         <Header />
-        {children}
+        
+            <MotionLayout>{children}</MotionLayout>
         <Footer />
       </body>
     </html>

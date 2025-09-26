@@ -5,12 +5,15 @@ import Contact from "./component/home/Contact";
 import HeroBanner from "./component/home/HeroBanner";
 import Portfolio from "./component/home/Portfolio";
 import ServicesSection from "./component/home/ServicesSection";
+import { MotionDiv } from "@/components/motion/MotionDiv";
+
 
 export default function Home() {
   return (
      <main className="min-h-screen bg-white">
       <HeroBanner />
       {/* rest of the page… */}
+      
       <AboutBlock />
       <ServicesSection />
       <Portfolio />

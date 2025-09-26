@@ -42,8 +42,12 @@ const Header: React.FC = () => {
             href="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
-            <Image src="/assets/propainting_construction_web_logo.png" width={100} height={60} alt="web-logo" />
-
+            <Image
+              src="/assets/propainting_construction_web_logo.png"
+              width={100}
+              height={60}
+              alt="web-logo"
+            />
           </Link>
 
           {/* Right actions (desktop) */}
@@ -195,18 +199,14 @@ const Header: React.FC = () => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Newsroom</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[100px] gap-3 py-2">
-                      <li className="space-y-2">
-                        <NavigationMenuLink asChild>
-                          <Link href="/news" className="">
-                            News
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
-                    </ul>
-                  </NavigationMenuContent>
+                  <NavigationMenuLink
+                    asChild
+                    className={navigationMenuTriggerStyle()}
+                  >
+                    <Link href="/news" className="">
+                      Newsroom
+                    </Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
@@ -241,7 +241,12 @@ const Header: React.FC = () => {
                         ProPaintingConstruction
                       </span> */}
 
-                       <Image src="/assets/propainting_construction_mobile_logo.png" width={80} height={60} alt="web-logo" />
+                      <Image
+                        src="/assets/propainting_construction_mobile_logo.png"
+                        width={80}
+                        height={60}
+                        alt="web-logo"
+                      />
                     </Link>
                   </SheetTitle>
                 </SheetHeader>
@@ -353,7 +358,7 @@ const Header: React.FC = () => {
 
                     <AccordionItem value="simple">
                       <AccordionTrigger className="px-2">
-                        <Link href='/about-us'>About Us</Link>
+                        <Link href="/about-us">About Us</Link>
                       </AccordionTrigger>
                       <AccordionContent className="px-2">
                         <ul className="space-y-2 ">
