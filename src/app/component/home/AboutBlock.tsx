@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { PhoneCall } from "lucide-react";
 import { motion, Variants } from "framer-motion";
+import Link from "next/link";
 
 // Variants for staggered fade-up effect
 const containerVariants = {
@@ -67,6 +68,7 @@ export default function AboutBlock() {
             </motion.div>
 
             <motion.div className="lg:mt-16 mt-6 flex flex-col items-start gap-6 sm:flex-row sm:items-center" variants={itemVariants}>
+              <Link href='/contact'>
               <Button
                 size="lg"
                 className="group relative overflow-hidden rounded-md bg-amber-500 lg:px-6 px-3 lg:py-6 py-3 text-white text-base hover:bg-amber-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40"
@@ -91,6 +93,7 @@ export default function AboutBlock() {
                   </svg>
                 </span>
               </Button>
+              </Link>
 
               <div className="flex items-center gap-4">
                 <div className="grid lg:h-12 h-10 lg:w-12 w-10  place-items-center rounded-full bg-amber-100">
