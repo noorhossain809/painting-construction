@@ -174,7 +174,7 @@ const BlogPostPageDetails = async ({ params }: Params) => {
                 <div className="space-y-4">
                   {latestPosts.map((lp) => (
                     <Link
-                      href={`/blog/${lp.slug}`}
+                      href={`/news/${lp.slug}`}
                       key={lp.slug}
                       className="flex items-center space-x-4 group"
                     >
