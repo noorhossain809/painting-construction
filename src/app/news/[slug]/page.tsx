@@ -15,9 +15,9 @@ import ContactSupport from "@/components/ui/ContactSupport";
  */
 type Props = {
   params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
 };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  // এখন আর rawSlug বা Array.isArray চেক করার প্রয়োজন নেই
   const slug = params.slug; 
 
   const post = blogPosts.find((p) => p.slug === slug);
@@ -33,8 +33,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 
-export default async function NewsPostPage({ params }: Props) {
+export default async function NewsPostPage({ params, searchParams }: Props) {
   const rawSlug = params?.slug;
+  console.log(params.slug);    // e.g., "123"
+  console.log(searchParams);
   const slug = Array.isArray(rawSlug) ? rawSlug[0] : rawSlug;
 
   if (!slug) {
