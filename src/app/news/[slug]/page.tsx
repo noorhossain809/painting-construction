@@ -13,16 +13,12 @@ import ContactSupport from "@/components/ui/ContactSupport";
  * Use an explicit record type for params to avoid `any` while remaining flexible.
  * This prevents ESLint from complaining and is safe for Next's route params.
  */
-type ParamsRecord = { params: { [key: string]: string | string[] } };
-
-export async function generateMetadata({ params }: ParamsRecord): Promise<Metadata> {
-  const rawSlug = params?.slug;
-  const slug = Array.isArray(rawSlug) ? rawSlug[0] : rawSlug;
-
-  // Defensive: slug could be undefined if route param missing; treat as not found
-  if (!slug) {
-    return { title: "Post Not Found" };
-  }
+type Props = {
+  params: { slug: string };
+};
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  // এখন আর rawSlug বা Array.isArray চেক করার প্রয়োজন নেই
+  const slug = params.slug; 
 
   const post = blogPosts.find((p) => p.slug === slug);
 
@@ -36,7 +32,8 @@ export async function generateMetadata({ params }: ParamsRecord): Promise<Metada
   };
 }
 
-export default async function NewsPostPage({ params }: ParamsRecord) {
+
+export default async function NewsPostPage({ params }: Props) {
   const rawSlug = params?.slug;
   const slug = Array.isArray(rawSlug) ? rawSlug[0] : rawSlug;
 
