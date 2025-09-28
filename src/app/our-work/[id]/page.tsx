@@ -22,11 +22,12 @@ import {
 import ContactSupport from "@/components/ui/ContactSupport";
 import Link from "next/link";
 
-type Props = {
-  params: { id: string };
+interface Props  {
+  params: Promise<{ id: string }>;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params;
   const project = PROJECTS.find((p) => p.id === params?.id);
 
   if (!project) {
@@ -47,7 +48,8 @@ type Fact = {
   value: string;
 };
 
-const PortfolioDetails = ({ params }: Props) => {
+const PortfolioDetails = async(props: Props) => {
+  const params = await props.params;
   const { id } = params;
 
   const project = PROJECTS.find((p) => p.id === id);

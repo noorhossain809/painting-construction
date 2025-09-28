@@ -8,11 +8,12 @@ import { notFound } from "next/navigation";
 import ContactSupport from "@/components/ui/ContactSupport";
 import Link from "next/link";
 
-type Props = {
-  params: { id: string };
+interface Props {
+  params: Promise<{ id: string }>;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params;
   const service = services.find((p) => p.id === params.id);
 
   if (!service) {
@@ -28,7 +29,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const ServiceDetailsPage = ({ params }: Props) => {
+const ServiceDetailsPage = async(props: Props) => {
+  const params = await props.params;
   const { id } = params;
 
   const service = services.find((p) => p.id === id);
