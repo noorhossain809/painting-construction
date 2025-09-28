@@ -10,14 +10,20 @@ import Link from "next/link";
 import ContactSupport from "@/components/ui/ContactSupport";
 
 /**
- * generateMetadata - use explicit inline typing (avoid custom Props alias)
+ * Use an explicit record type for params to avoid `any` while remaining flexible.
+ * This prevents ESLint from complaining and is safe for Next's route params.
  */
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string | string[] };
-}): Promise<Metadata> {
-  const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
+type ParamsRecord = { params: { [key: string]: string | string[] } };
+
+export async function generateMetadata({ params }: ParamsRecord): Promise<Metadata> {
+  const rawSlug = params?.slug;
+  const slug = Array.isArray(rawSlug) ? rawSlug[0] : rawSlug;
+
+  // Defensive: slug could be undefined if route param missing; treat as not found
+  if (!slug) {
+    return { title: "Post Not Found" };
+  }
+
   const post = blogPosts.find((p) => p.slug === slug);
 
   if (!post) {
@@ -30,15 +36,14 @@ export async function generateMetadata({
   };
 }
 
-/**
- * Default page component. Use a plain async function with inline types.
- */
-export default async function NewsPostPage({
-  params,
-}: {
-  params: { slug: string | string[] };
-}) {
-  const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
+export default async function NewsPostPage({ params }: ParamsRecord) {
+  const rawSlug = params?.slug;
+  const slug = Array.isArray(rawSlug) ? rawSlug[0] : rawSlug;
+
+  if (!slug) {
+    notFound();
+  }
+
   const currentPost = blogPosts.find((p) => p.slug === slug);
 
   if (!currentPost) {
