@@ -9,12 +9,13 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import ContactSupport from "@/components/ui/ContactSupport";
 
-type Props = {
-  params: { slug: string };
+type Params = {
+  params: { slug: string | string[] };
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = blogPosts.find((p) => p.slug === params.slug);
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
+  const post = blogPosts.find((p) => p.slug === slug);
 
   if (!post) {
     return { title: "Post Not Found" };
@@ -26,22 +27,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const BlogPostPageDetails = ({ params }: Props) => {
-  const { slug } = params;
-
+const BlogPostPageDetails = async ({ params }: Params) => {
+  const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
   const currentPost = blogPosts.find((p) => p.slug === slug);
 
   if (!currentPost) {
     notFound();
   }
 
-  const formattedDate = new Date(currentPost.date).toISOString().split("T")[0];
+  // Defensive: TypeScript knows currentPost exists after notFound() above, but keep local const
+  const post = currentPost as (typeof blogPosts)[number];
+
+  // Ensure date is formatted as YYYY-MM-DD for schema
+  const formattedDate =
+    post?.date ? new Date(post.date).toISOString().split("T")[0] : new Date().toISOString().split("T")[0];
+
   const blogPostSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: currentPost.title,
-    description: currentPost.description,
-    image: `https://www.yourwebsite.com${currentPost.image}`, // সম্পূর্ণ URL দিন
+    headline: post.title,
+    description: post.description,
+    image: `https://www.yourwebsite.com${post.image}`,
     author: {
       "@type": "Organization",
       name: "Pro Painting Construction",
@@ -51,14 +57,16 @@ const BlogPostPageDetails = ({ params }: Props) => {
       name: "Pro Painting Construction",
       logo: {
         "@type": "ImageObject",
-        url: "https://www.yourwebsite.com/logo.png", // আপনার লোগোর URL
+        url: "https://www.yourwebsite.com/logo.png",
       },
     },
     datePublished: formattedDate,
   };
 
   // Get the 3 latest posts for the sidebar, excluding the current one
+  // If your blogPosts aren't already ordered, you could sort by date here.
   const latestPosts = blogPosts.filter((p) => p.slug !== slug).slice(0, 3);
+
   return (
     <div className="min-h-screen bg-background">
       <script
@@ -89,28 +97,29 @@ const BlogPostPageDetails = ({ params }: Props) => {
           </div>
         </div>
       </section>
+
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-12">
           {/* Main Content */}
           <main className="lg:col-span-2">
             <article className="prose prose-lg max-w-none prose-p:text-gray-600 prose-headings:text-gray-800">
               <h3 className="text-2xl md:text-3xl font-semibold text-[#0B2653] mb-4">
-                {currentPost.title}
+                {post.title}
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                {currentPost.description}
+                {post.description}
               </p>
 
               {/* Render the first part of the content */}
               <p className="text-muted-foreground leading-relaxed">
-                {currentPost.content.substring(0, 500)}...
+                {post.content?.substring(0, 500)}...
               </p>
 
               {/* Image with Caption */}
               <figure className="my-8">
                 <Image
-                  src={currentPost.image}
-                  alt={currentPost.alt}
+                  src={post.image}
+                  alt={post.alt ?? post.title}
                   width={800}
                   height={450}
                   className="rounded-lg"
@@ -123,7 +132,7 @@ const BlogPostPageDetails = ({ params }: Props) => {
 
               {/* Render the rest of the content */}
               <p className="text-muted-foreground leading-relaxed">
-                {currentPost.content.substring(500)}
+                {post.content?.substring(500)}
               </p>
             </article>
 
@@ -155,18 +164,6 @@ const BlogPostPageDetails = ({ params }: Props) => {
                 </Button>
               </div>
 
-              {/* Newsletter */}
-              {/* <div className="bg-yellow-500 p-6 rounded-lg text-center">
-        <h3 className="text-2xl font-bold mb-2 text-gray-800">Newsletter</h3>
-        <p className="text-gray-700 mb-4 text-sm">
-          Sign up our newsletter to get update information, news and free insight.
-        </p>
-        <Input placeholder="Email" className="mb-3 bg-white" />
-        <Button className="w-full bg-gray-800 text-white hover:bg-gray-900">
-          SIGN UP
-        </Button>
-      </div> */}
-
               <ContactSupport />
 
               {/* Latest Posts */}
@@ -175,26 +172,26 @@ const BlogPostPageDetails = ({ params }: Props) => {
                   Latest Post
                 </h3>
                 <div className="space-y-4">
-                  {latestPosts.map((post) => (
+                  {latestPosts.map((lp) => (
                     <Link
-                      href={`/news/${post.slug}`}
-                      key={post.slug}
+                      href={`/blog/${lp.slug}`}
+                      key={lp.slug}
                       className="flex items-center space-x-4 group"
                     >
                       <div className="relative h-16 w-16 rounded-md overflow-hidden flex-shrink-0">
                         <Image
-                          src={post.image}
-                          alt={post.title}
+                          src={lp.image}
+                          alt={lp.title}
                           fill
                           className="object-cover"
                         />
                       </div>
                       <div>
                         <h4 className="font-semibold leading-tight group-hover:text-yellow-600 transition-colors">
-                          {post.title}
+                          {lp.title}
                         </h4>
                         <div className="text-xs text-gray-500 mt-1 flex items-center">
-                          <span>{post.date}</span>
+                          <span>{lp.date}</span>
                           <span className="mx-2">·</span>
                           <MessageCircle className="h-3 w-3 mr-1" />
                           <span>No Comments</span>
