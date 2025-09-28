@@ -32,8 +32,8 @@ const Contact = () => {
                     <p className="md:text-base text-sm text-muted-foreground">Mon-Fri: 7AM-6PM</p>
                   </div>
                 </div>
-                <a href="tel:+1234567890" className="text-primary font-bold lg:text-xl md:text-lg text-base hover:text-primary-glow transition-colors">
-                  +9175398168
+                <a href="tel:+1-917-539-8168" className="text-primary hover:text-primary-glow transition-colors">
+                  +1 (917) 539-8168
                 </a>
               </CardContent>
             </Card>

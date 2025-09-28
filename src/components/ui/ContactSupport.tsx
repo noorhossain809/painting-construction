@@ -32,10 +32,10 @@ const ContactSupport = () => {
             <p className="text-sm text-slate-300">Call Support Center 24/7</p>
             <a
               id="support-heading"
-              href="tel:+18091206705"
+              href="tel:+1-917-539-8168"
               className="mt-2 block text-lg sm:text-xl font-semibold tracking-tight text-white no-underline hover:underline"
             >
-              +9175398168
+               +1 (917) 539-8168
             </a>
           </div>
 

@@ -5,16 +5,26 @@ import { ArrowRight, CalendarDays } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "News & Insights | Pro Painting Construction",
+  description: "Stay updated with the latest news, industry trends, and insights from Pro Painting Construction. Read our articles on painting, renovation, and construction in New York.",
+};
+
 const NewsPage = () => {
+
+
   return (
     <div className="min-h-screen bg-background">
+      
       {" "}
       {/* <-- fixed: use className */}
   <section className="relative h-[48vh] md:h-[70vh]">
   {/* Image goes here, fill makes it behave like a background */}
   <Image
     src="/assets/office-building.jpg"
-    alt="construction"
+    alt="A modern office building in New York, representing the latest in construction news and trends."
     fill
     className="object-cover object-center"
     priority
@@ -37,7 +47,7 @@ const NewsPage = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {blogPosts.map((post, index) => (
-              <Link href={`/news/${post.slug}`} key={index} className="group">
+              <Link href={`/news/${post.id}`} key={index} className="group">
                 <div className="overflow-hidden rounded-lg shadow-lg transition-smooth duration-300 hover:scale-105">
                   {/* Image wrapper */}
                   <div className="relative inset-0 w-full h-64 overflow-hidden">

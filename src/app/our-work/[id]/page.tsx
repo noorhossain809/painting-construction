@@ -1,10 +1,9 @@
-"use client";
-
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { PROJECTS } from "@/app/data/projects";
 import {
   MapPin,
@@ -21,6 +20,26 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import ContactSupport from "@/components/ui/ContactSupport";
+import Link from "next/link";
+
+type Props = {
+  params: { id: string };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const project = PROJECTS.find((p) => p.id === params?.id);
+
+  if (!project) {
+    return {
+      title: "Project Not Found",
+    };
+  }
+
+  return {
+    title: `${project.title} | Our Work | Pro Painting Construction`,
+    description: project.description,
+  };
+}
 
 type Fact = {
   icon: React.ReactNode;
@@ -28,12 +47,10 @@ type Fact = {
   value: string;
 };
 
+const PortfolioDetails = ({ params }: Props) => {
+  const { id } = params;
 
-const PortfolioDetail = () => {
-  const { id } = useParams();
-  const router = useRouter();
-
-  const project = PROJECTS.find((p) => p.slug === id);
+  const project = PROJECTS.find((p) => p.id === id);
 
   const facts: Fact[] = [
     {
@@ -49,7 +66,7 @@ const PortfolioDetail = () => {
     {
       icon: <Ruler className="h-5 w-5" />,
       label: "Scope Of Work",
-      value: '12000+',
+      value: "12000+",
     },
     {
       icon: <CalendarDays className="h-5 w-5" />,
@@ -59,19 +76,7 @@ const PortfolioDetail = () => {
   ];
 
   if (!project) {
-    return (
-      <div className="min-h-screen bg-background">
-        <div className="container mx-auto px-4 py-20 text-center">
-          <h1 className="text-4xl font-bold text-foreground mb-4">
-            Project Not Found
-          </h1>
-          <Button onClick={() => router.push("/")} variant="default">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Home
-          </Button>
-        </div>
-      </div>
-    );
+    notFound();
   }
 
   return (
@@ -87,24 +92,25 @@ const PortfolioDetail = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
         <div className="absolute inset-0 flex items-center">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl text-white">
+            <div className="flex flex-col justify-center items-center text-white">
               <Badge className="mb-6 bg-primary/90 backdrop-blur text-primary-foreground px-4 py-2 text-sm font-medium">
                 {project?.type}
               </Badge>
-              <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
                 {project?.title}
               </h1>
-              <p className="text-xl md:text-2xl opacity-90 leading-relaxed mb-8">
+              <p className="text-lg md:text-xl opacity-90 leading-relaxed mb-8">
                 {project?.description}
               </p>
-              <Button
-                variant="outline"
-                onClick={() => router.push("/")}
-                className="bg-white/10 backdrop-blur border-white/30 text-white hover:bg-white/20 hover:border-white/50 transition-all duration-300"
-              >
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Portfolio
-              </Button>
+              <Link href="/our-work">
+                <Button
+                  variant="outline"
+                  className="bg-white/10 backdrop-blur border-white/30 text-white hover:bg-white/20 hover:border-white/50 transition-all duration-300"
+                >
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Back to Portfolio
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -158,23 +164,44 @@ const PortfolioDetail = () => {
               </Carousel>
             </div>
             {/* Copy blocks */}
-            <div className="mt-8 md:mt-10 space-y-6 text-muted-foreground leading-relaxed">
-              <p>Construction standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga harum quidem rerum facilis est et expedita distinctio.</p>
-            </div>
+            <div className="mt-8 md:mt-12">
+              {/* The Challenge Section */}
+              <div className="mb-8">
+                <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
+                  The Challenge
+                </h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  {project.challenge}
+                </p>
+              </div>
 
-            <div className="mt-6 md:mt-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-                {project.title}
-              </h2>
-              <p className="mt-4 text-muted-foreground leading-relaxed">
-                {project.description}
-              </p>
+              {/* Our Solution Section */}
+              <div className="mb-8">
+                <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
+                  Our Solution
+                </h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  {project.solution}
+                </p>
+              </div>
+
+              {/* Results Section */}
+              <div>
+                <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
+                  Results & Outcome
+                </h2>
+                <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+                  {project.results.map((result, index) => (
+                    <li key={index}>{result}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 
           {/* Right: facts card */}
           <div className="space-y-4 flex flex-col justify-center items-center">
+            <ContactSupport />
             <Card className="rounded-2xl bg-yellow-400/10 border border-muted/50 shadow-sm p-6  w-full max-w-sm md:p-7">
               <ul className="divide-y">
                 {facts.map((f, i) => (
@@ -196,7 +223,6 @@ const PortfolioDetail = () => {
                 ))}
               </ul>
             </Card>
-            <ContactSupport />
           </div>
         </div>
       </div>
@@ -204,4 +230,4 @@ const PortfolioDetail = () => {
   );
 };
 
-export default PortfolioDetail;
+export default PortfolioDetails;

@@ -117,7 +117,14 @@ export default function ServicesSection() {
 
 /* -------------------- Card -------------------- */
 
-function ServiceCard({ title, image, id, featured, description }: Service) {
+function ServiceCard({
+  title,
+  image,
+  id,
+  featured,
+  description,
+  alt,
+}: Service) {
   return (
     <Link
       href={`service/${id}`}
@@ -132,7 +139,7 @@ function ServiceCard({ title, image, id, featured, description }: Service) {
       >
         <Image
           src={image}
-          alt={title}
+          alt={alt}
           fill
           sizes="(min-width:1024px) 25vw, (min-width:768px) 50vw, 100vw"
           className="object-cover transition-transform duration-700 group-hover:scale-105"

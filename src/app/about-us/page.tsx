@@ -4,13 +4,20 @@ import ContactSupport from "@/components/ui/ContactSupport";
 import Image from "next/image";
 import React from "react";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Pro Painting Construction | Our Story & Mission",
+  description: "Learn about Pro Painting Construction, a leading painting and renovation company in New York. Discover our mission, values, and commitment to quality craftsmanship.",
+};
+
 const AboutUsPage = () => {
   return (
-    <div min-h-screen bg-background>
+    <div className="min-h-screen bg-background">
       <section className="relative h-[48vh] md:h-[70vh] overflow-hidden">
         <Image
           src="/assets/mobile-engineers_1098-15445.jpg"
-          alt="before-after"
+          alt="The professional team of Pro Painting Construction discussing a project plan in New York."
           fill
           priority
           sizes="100vw"

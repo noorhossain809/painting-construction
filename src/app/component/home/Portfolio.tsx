@@ -32,19 +32,19 @@ const Portfolio = () => {
         {/* Featured Before/After */}
         <div className="mb-16">
           <Card className="p-0 overflow-hidden shadow-construction border-1">
-            <div className="relative h-[420px]">
-              {" "}
-              {/* parent gets height + relative */}
+            {/* 1. Add flexbox and centering classes to this parent div */}
+            <div className="relative h-[420px] flex flex-col items-center justify-center">
               <Image
                 src="/assets/before-after.jpg"
-                alt="Before and after home transformation"
+                alt="Stunning before and after exterior transformation of a home in New York"
                 fill
                 className="object-cover transition-transform duration-500 ease-in-out hover:scale-105"
                 priority
               />
               <div className="absolute inset-0 bg-gradient-overlay opacity-50" />
-              <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                <h3 className="text-2xl font-bold mb-2 ">
+              {/* 2. Make this div relative for stacking context and remove bottom-0 */}
+              <div className="relative text-center text-white">
+                <h3 className="text-2xl font-bold mb-2">
                   Complete Home Transformation
                 </h3>
                 <p className="text-lg opacity-90">
@@ -66,7 +66,7 @@ const Portfolio = () => {
                 <div className="relative h-48">
                   <Image
                     src={project.image}
-                    alt={project.title}
+                    alt={project.alt}
                     fill
                     className="w-full object-cover group-hover:scale-105 transition-transform duration-300"
                     priority

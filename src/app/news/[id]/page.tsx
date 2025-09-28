@@ -1,7 +1,7 @@
 // /app/blog/[slug]/page.tsx
-"use client";
+import type { Metadata } from "next";
 import Image from "next/image";
-import { notFound, useParams } from "next/navigation";
+import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Facebook, Twitter, Mail, Search, MessageCircle } from "lucide-react";
 import { blogPosts } from "@/app/data/projects";
@@ -9,19 +9,62 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import ContactSupport from "@/components/ui/ContactSupport";
 
-const BlogPostPageDetails = () => {
-  const { id } = useParams();
+type Props = {
+  params: { id: string };
+};
 
-  const currentPost = blogPosts.find((p) => p.slug === id);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const post = blogPosts.find((p) => p.id === params.id);
+
+  if (!post) {
+    return { title: "Post Not Found" };
+  }
+
+  return {
+    title: `${post.title} | Pro Painting Construction Blog`,
+    description: post.description,
+  };
+}
+
+const BlogPostPageDetails = ({ params }: Props) => {
+  const { id } = params;
+
+  const currentPost = blogPosts.find((p) => p.id === id);
 
   if (!currentPost) {
     notFound();
   }
 
+  const formattedDate = new Date(currentPost.date).toISOString().split("T")[0];
+  const blogPostSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: currentPost.title,
+    description: currentPost.description,
+    image: `https://www.yourwebsite.com${currentPost.image}`, // সম্পূর্ণ URL দিন
+    author: {
+      "@type": "Organization",
+      name: "Pro Painting Construction",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Pro Painting Construction",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.yourwebsite.com/logo.png", // আপনার লোগোর URL
+      },
+    },
+    datePublished: formattedDate,
+  };
+
   // Get the 3 latest posts for the sidebar, excluding the current one
-  const latestPosts = blogPosts.filter((p) => p.slug !== id).slice(0, 3);
+  const latestPosts = blogPosts.filter((p) => p.id !== id).slice(0, 3);
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostSchema) }}
+      />
       <section className="relative h-[48vh] md:h-[70vh] overflow-hidden">
         <Image
           src="/assets/working-with-blueprint.jpg"
@@ -38,9 +81,9 @@ const BlogPostPageDetails = () => {
         <div className="absolute inset-0 flex items-center">
           <div className="container mx-auto max-w-7xl px-4">
             <div className=" text-white text-center">
-              <h1 className="text-4xl md:text-7xl font-bold mb-4 leading-tight uppercase">
+              <h2 className="text-4xl md:text-7xl font-bold mb-4 leading-tight uppercase">
                 News Details
-              </h1>
+              </h2>
               <p className="text-muted">Home/news</p>
             </div>
           </div>
@@ -51,17 +94,23 @@ const BlogPostPageDetails = () => {
           {/* Main Content */}
           <main className="lg:col-span-2">
             <article className="prose prose-lg max-w-none prose-p:text-gray-600 prose-headings:text-gray-800">
-              <h1 className="text-xl">{currentPost.title}</h1>
-              <p>{currentPost.description}</p>
+              <h3 className="text-2xl md:text-3xl font-semibold text-[#0B2653] mb-4">
+                {currentPost.title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                {currentPost.description}
+              </p>
 
               {/* Render the first part of the content */}
-              <p>{currentPost.content.substring(0, 500)}...</p>
+              <p className="text-muted-foreground leading-relaxed">
+                {currentPost.content.substring(0, 500)}...
+              </p>
 
               {/* Image with Caption */}
               <figure className="my-8">
                 <Image
                   src={currentPost.image}
-                  alt="Engineers working at a construction site"
+                  alt={currentPost.alt}
                   width={800}
                   height={450}
                   className="rounded-lg"
@@ -73,7 +122,9 @@ const BlogPostPageDetails = () => {
               </figure>
 
               {/* Render the rest of the content */}
-              <p>{currentPost.content.substring(500)}</p>
+              <p className="text-muted-foreground leading-relaxed">
+                {currentPost.content.substring(500)}
+              </p>
             </article>
 
             {/* Social Share Bar */}
@@ -126,8 +177,8 @@ const BlogPostPageDetails = () => {
                 <div className="space-y-4">
                   {latestPosts.map((post) => (
                     <Link
-                      href={`/news/${post.slug}`}
-                      key={post.slug}
+                      href={`/news/${post.id}`}
+                      key={post.id}
                       className="flex items-center space-x-4 group"
                     >
                       <div className="relative h-16 w-16 rounded-md overflow-hidden flex-shrink-0">

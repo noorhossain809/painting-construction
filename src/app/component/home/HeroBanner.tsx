@@ -33,42 +33,26 @@ const slides: Slide[] = [
   {
     kind: "video",
     mp4: "/videos/construction.mp4",
-    webm: "/videos/construction.webm",
-    poster: "/images/hero-poster.jpg",
-    title: "Building dreams with precision and excellence",
-    subtitle:
-      "We specialize in turning visions into reality with exceptional craftsmanship and meticulous attention to detail.",
+    title: "Expert Painting & Construction Services in New York, USA", 
+    subtitle: "From residential buildings to commercial complexes, we build with trust and quality.", 
   },
   {
     kind: "video",
     mp4: "/videos/painting.mp4",
-    webm: "/videos/painting.webm",
-    poster: "/images/hero-poster.jpg",
-    title: "Building dreams with precision and excellence",
-    subtitle:
-      "We specialize in turning visions into reality with exceptional craftsmanship and meticulous attention to detail.",
-  },
-  {
-    kind: "video",
-    mp4: "/videos/construction_2.mp4",
-    webm: "/videos/construction_2.webm",
-    poster: "/images/hero-poster.jpg",
-    title: "Building dreams with precision and excellence",
-    subtitle:
-      "We specialize in turning visions into reality with exceptional craftsmanship and meticulous attention to detail.",
+    title: "Professional Painting for Homes & Offices",
+    subtitle: "Transform your space with our premium painting services and skilled professionals.", 
   },
   {
     kind: "image",
     src: "/assets/construct-planning.jpg",
-    title: "From blueprint to skyline",
-    subtitle: "On time, on budget — no excuses.",
+    title: "Your Vision, Our Blueprint",
+    subtitle: "Meticulous planning and on-time project delivery guaranteed.",
   },
 ];
 
 export default function HeroBanner() {
   return (
     <section className="relative mx-auto max-h-screen overflow-hidden">
-      {/* Custom nav buttons (we style them like the circular button in your image) */}
       <div
         className="custom-prev absolute left-6 top-1/2 z-20 -translate-y-1/2 cursor-pointer"
         aria-hidden="true"
@@ -147,7 +131,7 @@ export default function HeroBanner() {
               <div className="relative z-10 grid h-full place-items-center px-6 py-24 text-center text-white md:px-12 lg:px-20">
                 <div className="max-w-4xl">
                   <p className="mb-4 text-xs font-semibold tracking-[0.2em] text-yellow-400">
-                    WELCOME TO BUILTUP
+                    PRO PAINTING CONSTRUCTION
                   </p>
                   <h1 className="text-2xl font-bold leading-tight md:text-4xl lg:text-6xl">{s.title}</h1>
                   {s.subtitle && (

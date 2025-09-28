@@ -1,5 +1,13 @@
 // app/component/home/ServicesSection.tsx
-"use client";
+
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title:
+    "Our Painting & Construction Services in New York | Pro Painting Construction",
+  description:
+    "Explore our wide range of expert services in New York City, including residential & commercial painting, full-scale remodeling, waterproofing, and more. Contact us for a free quote.",
+};
 
 import Image from "next/image";
 import Link from "next/link";
@@ -13,8 +21,8 @@ export default function ServicesPage() {
       {/* Hero */}
       <section className="relative h-[48vh] md:h-[75vh] overflow-hidden">
         <Image
-          src="/assets/residential-building-wooden-construction-job.jpg" // or "sandbox:/mnt/data/c49ceef7-229f-429e-ad17-b22dba1a879e.png"
-          alt="before-after"
+          src="/assets/residential-building-wooden-construction-job.jpg"
+          alt="A new residential building under construction in New York with a focus on wooden framework."
           fill
           priority
           sizes="100vw"
@@ -28,11 +36,11 @@ export default function ServicesPage() {
           <div className="container mx-auto max-w-7xl px-4">
             <div className=" text-white">
               <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight text-center uppercase">
-                Service
+                Our Expert Services
               </h1>
               <div className="absolute right-5 bottom-5">
                 <p className="text-gray-200">Home/service</p>
-            </div>
+              </div>
             </div>
           </div>
         </div>
@@ -47,11 +55,10 @@ export default function ServicesPage() {
             OUR SERVICES
           </div>
           <h2 className="text-4xl font-extrabold leading-tight text-slate-900 md:text-5xl">
-            Our construction services
+            Our Painting & construction services
           </h2>
           <p className="mx-auto mt-4 max-w-3xl text-slate-600 md:text-lg">
-            We specialize in a wide range of construction services, including
-            residential, commercial, and industrial projects.
+           From residential apartments in Manhattan to large-scale commercial and industrial projects across New York City, we deliver a wide range of expert construction services tailored to your needs.
           </p>
         </div>
         <div className="mt-10 grid gap-6 md:mt-14 md:grid-cols-2 lg:grid-cols-4">
@@ -158,6 +165,7 @@ function ServiceCard({
   id = "#",
   featured,
   description,
+  alt,
 }: Service) {
   return (
     <Link
@@ -168,7 +176,7 @@ function ServiceCard({
       <div className="absolute inset-0">
         <Image
           src={image}
-          alt={title}
+          alt={alt}
           fill
           sizes="(min-width:1024px) 25vw, (min-width:768px) 50vw, 100vw"
           className="object-cover transition-transform duration-700 group-hover:scale-105"

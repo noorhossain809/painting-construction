@@ -1,14 +1,22 @@
 // app/components/TeamSection.tsx
-"use client";
 
 import ContactForm from "@/components/ui/contactForm";
 import ContactSupport from "@/components/ui/ContactSupport";
 import Image from "next/image";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Our Expert Team | Pro Painting Construction",
+  description:
+    "Meet the dedicated team of professionals at Pro Painting Construction. Our experienced engineers and managers are committed to delivering excellence in New York.",
+};
+
 type TeamMember = {
   name: string;
   role: string;
   image: string;
+  alt: string;
 };
 
 const team: TeamMember[] = [
@@ -16,31 +24,35 @@ const team: TeamMember[] = [
     name: "Jhon Castellon",
     role: "ENGINEERING OFFICER",
     image: "/assets/our-team/team1.jpg",
+    alt: "Photo of Jhon Castellon, Engineering Officer at Pro Painting Construction",
   },
   {
     name: "Fiorella Ibáñez",
     role: "MARKETING MANAGER",
     image: "/assets/our-team/team2.jpg",
+    alt: "Photo of Fiorella Ibáñez, Marketing Manager at Pro Painting Construction",
   },
   {
     name: "Zosé Corpio",
     role: "TECHNOLOGY OFFICER",
     image: "/assets/our-team/team3.jpg",
+    alt: "Photo of Zosé Corpio, Technology Officer at Pro Painting Construction",
   },
   {
     name: "Kyle Frederick",
     role: "FIELD OFFICER",
     image: "/assets/our-team/team4.jpg",
+    alt: "Photo of Kyle Frederick, Field Officer at Pro Painting Construction",
   },
 ];
 
 export default function TeamSection() {
   return (
-    <div min-h-screen bg-background>
+    <div className="min-h-screen bg-background">
       <div className="relative h-[48vh] md:h-[70vh] overflow-hidden">
         <Image
           src="/assets/shot-of-a-group-of-builders-having-a-meeting-at-a-construction-site.jpg"
-          alt="before-after"
+          alt="The Pro Painting Construction leadership team meeting at a New York City job site."
           fill
           priority
           sizes="100vw"
@@ -71,8 +83,10 @@ export default function TeamSection() {
             Expert Dedicated <span className="text-yellow-500">Team</span>
           </h2>
           <p className="mt-4 text-gray-500 max-w-2xl mx-auto">
-            Pro Painting & Construction is a general term meaning the art and
-            science to form objects systems organizations.
+            Our strength lies in our experienced and dedicated team. From
+            project managers to skilled craftspeople, every member of Pro
+            Painting & Construction is committed to upholding the highest
+            standards of quality and service for our clients in New York.
           </p>
 
           {/* Team Grid */}
@@ -82,7 +96,7 @@ export default function TeamSection() {
                 <div className="relative w-full h-[320px] overflow-hidden">
                   <Image
                     src={member.image}
-                    alt={member.name}
+                    alt={member.alt}
                     fill
                     className="object-cover"
                   />
@@ -101,7 +115,7 @@ export default function TeamSection() {
         </div>
       </div>
 
-       <div
+      <div
         id="contact"
         className="py-10 bg-[url('/assets/contact-us-bg.png')] bg-cover bg-center bg-no-repeat bg-sky-100"
       >

@@ -6,13 +6,47 @@ import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact Us for a Free Quote | Pro Painting Construction",
+  description: "Get in touch with Pro Painting Construction in Brooklyn, New York. Call us, email, or fill out our form for a free, no-obligation estimate on your next project.",
+};
+
 const ContactPage = () => {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Pro Painting Construction",
+    "image": "https://www.yourwebsite.com/logo.png",
+    "url": "https://www.yourwebsite.com/contact",
+    "telephone": "+1-917-539-8168",
+    "email": "mrh_nyc@yahoo.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "4017 Avenue D",
+      "addressLocality": "Brooklyn",
+      "addressRegion": "NY",
+      "postalCode": "11203",
+      "addressCountry": "US"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "07:00",
+      "closes": "18:00"
+    }
+  };
   return (
-    <div min-h-screen bg-background>
+    <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <section className="relative h-[48vh] md:h-[70vh] overflow-hidden">
         <Image
           src="/assets/mobile-engineers_1098-15445.jpg"
-          alt="before-after"
+          alt="A construction manager from Pro Painting Construction taking a call at a New York job site."
           fill
           priority
           sizes="100vw"
@@ -65,10 +99,10 @@ const ContactPage = () => {
                 </div>
               </div>
               <a
-                href="tel:+9175398168"
+                href="tel:+1-917-539-8168"
                 className="text-primary font-bold text-xl hover:text-primary-glow transition-colors"
               >
-                9175398168
+                +1 (917) 539-8168
               </a>
             </CardContent>
           </Card>
@@ -109,7 +143,7 @@ const ContactPage = () => {
                 </div>
               </div>
               <p className="text-foreground">
-                Metropolitan Area & Surrounding Counties
+                Serving all five boroughs of New York City (Manhattan, Brooklyn, Queens, The Bronx, and Staten Island) and surrounding counties.
               </p>
             </CardContent>
           </Card>
