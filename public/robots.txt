@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://propaintconstruction.com/
+
+# Sitemaps
+Sitemap: https://propaintconstruction.com/sitemap.xml
