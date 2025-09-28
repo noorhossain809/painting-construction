@@ -1,4 +1,4 @@
-// /app/blog/[slug]/page.tsx
+// src/app/news/[slug]/page.tsx
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -9,11 +9,14 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import ContactSupport from "@/components/ui/ContactSupport";
 
-type Params = {
+/**
+ * generateMetadata - use explicit inline typing (avoid custom Props alias)
+ */
+export async function generateMetadata({
+  params,
+}: {
   params: { slug: string | string[] };
-};
-
-export async function generateMetadata({ params }: Params): Promise<Metadata> {
+}): Promise<Metadata> {
   const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
   const post = blogPosts.find((p) => p.slug === slug);
 
@@ -27,7 +30,14 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   };
 }
 
-const BlogPostPageDetails = async ({ params }: Params) => {
+/**
+ * Default page component. Use a plain async function with inline types.
+ */
+export default async function NewsPostPage({
+  params,
+}: {
+  params: { slug: string | string[] };
+}) {
   const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
   const currentPost = blogPosts.find((p) => p.slug === slug);
 
@@ -35,10 +45,8 @@ const BlogPostPageDetails = async ({ params }: Params) => {
     notFound();
   }
 
-  // Defensive: TypeScript knows currentPost exists after notFound() above, but keep local const
   const post = currentPost as (typeof blogPosts)[number];
 
-  // Ensure date is formatted as YYYY-MM-DD for schema
   const formattedDate =
     post?.date ? new Date(post.date).toISOString().split("T")[0] : new Date().toISOString().split("T")[0];
 
@@ -63,8 +71,6 @@ const BlogPostPageDetails = async ({ params }: Params) => {
     datePublished: formattedDate,
   };
 
-  // Get the 3 latest posts for the sidebar, excluding the current one
-  // If your blogPosts aren't already ordered, you could sort by date here.
   const latestPosts = blogPosts.filter((p) => p.slug !== slug).slice(0, 3);
 
   return (
@@ -100,7 +106,6 @@ const BlogPostPageDetails = async ({ params }: Params) => {
 
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-12">
-          {/* Main Content */}
           <main className="lg:col-span-2">
             <article className="prose prose-lg max-w-none prose-p:text-gray-600 prose-headings:text-gray-800">
               <h3 className="text-2xl md:text-3xl font-semibold text-[#0B2653] mb-4">
@@ -110,12 +115,10 @@ const BlogPostPageDetails = async ({ params }: Params) => {
                 {post.description}
               </p>
 
-              {/* Render the first part of the content */}
               <p className="text-muted-foreground leading-relaxed">
                 {post.content?.substring(0, 500)}...
               </p>
 
-              {/* Image with Caption */}
               <figure className="my-8">
                 <Image
                   src={post.image}
@@ -125,18 +128,15 @@ const BlogPostPageDetails = async ({ params }: Params) => {
                   className="rounded-lg"
                 />
                 <figcaption className="text-center text-sm text-gray-500 mt-2">
-                  Team construction engineers working at construction site with
-                  blueprint on table
+                  Team construction engineers working at construction site with blueprint on table
                 </figcaption>
               </figure>
 
-              {/* Render the rest of the content */}
               <p className="text-muted-foreground leading-relaxed">
                 {post.content?.substring(500)}
               </p>
             </article>
 
-            {/* Social Share Bar */}
             <div className="mt-12 flex flex-wrap gap-2">
               <Button className="bg-yellow-500 hover:bg-yellow-600 text-gray-800">
                 <Facebook className="h-4 w-4 mr-2" /> Facebook
@@ -150,10 +150,8 @@ const BlogPostPageDetails = async ({ params }: Params) => {
             </div>
           </main>
 
-          {/* Sidebar */}
           <div className="mt-12 lg:mt-0">
             <aside className="space-y-8">
-              {/* Search Bar */}
               <div className="relative w-full max-w-sm">
                 <Input placeholder="Search..." className="pr-12" />
                 <Button
@@ -166,7 +164,6 @@ const BlogPostPageDetails = async ({ params }: Params) => {
 
               <ContactSupport />
 
-              {/* Latest Posts */}
               <div>
                 <h3 className="text-2xl font-bold mb-4 border-b pb-2">
                   Latest Post
@@ -207,6 +204,4 @@ const BlogPostPageDetails = async ({ params }: Params) => {
       </div>
     </div>
   );
-};
-
-export default BlogPostPageDetails;
+}
