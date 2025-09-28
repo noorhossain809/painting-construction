@@ -58,7 +58,7 @@ const Portfolio = () => {
         {/* Project Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {PROJECTS.slice(0, 6).map((project, index) => (
-            <Link href={`/our-work/${project.slug}`} key={index}>
+            <Link href={`/our-work/${project.id}`} key={index}>
               <Card
                 key={index}
                 className="group p-0 overflow-hidden hover:shadow-sky-50 transition-all duration-300 border-0 shadow "

@@ -47,7 +47,7 @@ const NewsPage = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {blogPosts.map((post, index) => (
-              <Link href={`/news/${post.id}`} key={index} className="group">
+              <Link href={`/news/${post.slug}`} key={index} className="group">
                 <div className="overflow-hidden rounded-lg shadow-lg transition-smooth duration-300 hover:scale-105">
                   {/* Image wrapper */}
                   <div className="relative inset-0 w-full h-64 overflow-hidden">

@@ -10,11 +10,11 @@ import Link from "next/link";
 import ContactSupport from "@/components/ui/ContactSupport";
 
 type Props = {
-  params: { id: string };
+  params: { slug: string };
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = blogPosts.find((p) => p.id === params.id);
+  const post = blogPosts.find((p) => p.slug === params.slug);
 
   if (!post) {
     return { title: "Post Not Found" };
@@ -27,9 +27,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const BlogPostPageDetails = ({ params }: Props) => {
-  const { id } = params;
+  const { slug } = params;
 
-  const currentPost = blogPosts.find((p) => p.id === id);
+  const currentPost = blogPosts.find((p) => p.slug === slug);
 
   if (!currentPost) {
     notFound();
@@ -58,7 +58,7 @@ const BlogPostPageDetails = ({ params }: Props) => {
   };
 
   // Get the 3 latest posts for the sidebar, excluding the current one
-  const latestPosts = blogPosts.filter((p) => p.id !== id).slice(0, 3);
+  const latestPosts = blogPosts.filter((p) => p.slug !== slug).slice(0, 3);
   return (
     <div className="min-h-screen bg-background">
       <script
@@ -177,8 +177,8 @@ const BlogPostPageDetails = ({ params }: Props) => {
                 <div className="space-y-4">
                   {latestPosts.map((post) => (
                     <Link
-                      href={`/news/${post.id}`}
-                      key={post.id}
+                      href={`/news/${post.slug}`}
+                      key={post.slug}
                       className="flex items-center space-x-4 group"
                     >
                       <div className="relative h-16 w-16 rounded-md overflow-hidden flex-shrink-0">

@@ -4,7 +4,7 @@ export type BlogPost = {
   category: string;
   date: string;
   title: string;
-  id: string;
+  slug: string;
   description:string;
   content: string;
   alt: string
@@ -465,7 +465,7 @@ export const blogPosts: BlogPost[] = [
     category: 'Exterior Painting',
     date: 'September 22, 2025',
     title: 'Choosing the Best Exterior Paint for New York\'s Four Seasons',
-    id: 'choosing-best-exterior-paint-new-york',
+    slug: 'choosing-best-exterior-paint-new-york',
     alt: 'A beautifully painted interior of a New York home, showcasing a quality finish that lasts.', // পরামর্শ: এই পোস্টের জন্য একটি বাইরের বাড়ির ছবি ব্যবহার করুন।
     description: 'From freezing winters to humid summers, NY weather is tough on exteriors. Pro Painting Construction guides you on durable paints that resist cracking, fading, and moisture.',
     content: `A high-quality exterior paint job is your home's first line of defense against the demanding New York climate. The key to a lasting finish isn't just the paint itself, but the **preparation**. Our process always begins with a thorough power washing to remove dirt, mildew, and loose paint. We then scrape, sand, and prime any bare spots to create a perfect surface for adhesion.
@@ -479,7 +479,7 @@ Finally, professional application makes all the difference. We apply paint under
     category: 'Interior Painting',
     date: 'September 18, 2025',
     title: 'Interior Paint Ideas to Maximize Space in Your NYC Apartment',
-    id: 'interior-paint-ideas-maximize-space-nyc',
+    slug: 'interior-paint-ideas-maximize-space-nyc',
     alt: 'A bright, modern New York City apartment living room with light-colored walls to maximize space.',
     description: 'Make your New York apartment feel larger and brighter. We explore paint colors and techniques that create an illusion of space, perfect for city living.',
     content: `In New York City, space is the ultimate luxury. While you can't add square footage with a paintbrush, you can create a powerful illusion of a larger, more open area. The most effective strategy is to use **light and neutral colors**. Shades like off-white, light gray, and soft beige are excellent at reflecting natural light, instantly making a room feel more airy and spacious.
@@ -493,7 +493,7 @@ Don't forget the power of a **monochromatic color scheme**. Painting the walls, 
     category: 'Historic Restoration',
     date: 'September 12, 2025',
     title: 'A Guide to Brooklyn Brownstone Facade Restoration',
-    id: 'guide-brooklyn-brownstone-facade-restoration',
+    slug: 'guide-brooklyn-brownstone-facade-restoration',
     alt: 'The classic facade of a historic Brooklyn brownstone undergoing exterior restoration and repointing.',
     description: 'Restoring a historic brownstone requires expertise. Learn about brick repointing, lintel repair, and choosing historically accurate paint colors.',
     content: `Owning a brownstone in Brooklyn is a dream for many, but maintaining its historic facade is a significant responsibility. The key to a successful restoration lies in understanding the unique materials and techniques required. One of the most critical aspects is **brick repointing**. Over time, the mortar between the bricks can decay. It's crucial to use a lime-based mortar that matches the original composition, as modern Portland cement is too hard and can damage the soft, historic bricks.
@@ -507,7 +507,7 @@ Navigating the regulations of the **Landmarks Preservation Commission (LPC)** is
     category: 'Home Renovation',
     date: 'September 5, 2025',
     title: 'The Complete Guide to Kitchen & Bath Remodeling in New York',
-    id: 'complete-guide-kitchen-bath-remodeling-ny',
+    slug: 'complete-guide-kitchen-bath-remodeling-ny',
     alt: 'A newly remodeled modern kitchen in a New York home, featuring white cabinets and quartz countertops.',
     description: 'Renovating a kitchen or bath offers the highest ROI for your NY property. Our guide covers budgeting, materials, and navigating co-op board approvals.',
     content: `A kitchen or bathroom remodel is one of the most valuable investments you can make in your New York property. For kitchens, the focus is on creating a space that is both beautiful and highly functional. This means prioritizing smart storage solutions, durable countertops like **quartz**, and an efficient layout. In a city where space is at a premium, custom cabinetry that reaches the ceiling can make a world of difference.
@@ -521,7 +521,7 @@ For those living in co-ops or condos, navigating the **alteration agreement** an
     category: 'Commercial Services',
     date: 'August 29, 2025',
     title: 'High-Impact Commercial Painting for NYC Storefronts',
-    id: 'high-impact-commercial-painting-nyc-storefronts',
+    slug: 'high-impact-commercial-painting-nyc-storefronts',
     alt: 'A construction manager and architect reviewing a blueprint for a commercial storefront renovation in NYC.',
     description: 'In a city of millions, your storefront needs to stand out. Discover how a professional paint job can increase foot traffic and brand recognition.',
     content: `In the competitive landscape of New York City, your storefront is more than just an entrance—it's your most important marketing tool. A clean, professional, and eye-catching exterior can significantly **increase foot traffic** and make your business appear more trustworthy and successful. Faded, chipping paint sends the wrong message to potential customers before they even step inside.
@@ -535,7 +535,7 @@ A professional paint job also shows you care about your community and your prope
     category: 'Waterproofing',
     date: 'August 22, 2025',
     title: 'Basement Waterproofing: A Crucial Step for NY Homeowners',
-    id: 'basement-waterproofing-ny-homeowners',
+    slug: 'basement-waterproofing-ny-homeowners',
     alt: 'A clean, dry basement after a professional waterproofing service, protecting the foundation from water damage.',
     description: 'Prevent costly water damage from melting snow and heavy rains. Learn about interior and exterior waterproofing solutions to keep your lower level dry and mold-free.',
     content: `For New York homeowners, a wet basement is a common and serious problem. Water can enter through cracks in the foundation, porous concrete, or improperly sealed joints, leading to mold, mildew, and costly structural damage. Effective **basement waterproofing** is not a luxury; it's an essential investment in the health and longevity of your home.
