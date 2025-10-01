@@ -5,9 +5,16 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { motion, Variants } from "framer-motion";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFade, Pagination, Navigation, Keyboard } from "swiper/modules";
+import {
+  Autoplay,
+  EffectFade,
+  Pagination,
+  Navigation,
+  Keyboard,
+} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
@@ -29,18 +36,40 @@ type Slide =
       subtitle?: string;
     };
 
+const headingVariants: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
+
+const container = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05, // controls delay between words
+    },
+  },
+};
+
+const child = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
 const slides: Slide[] = [
   {
     kind: "video",
     mp4: "/videos/construction.mp4",
-    title: "Expert Painting & Construction Services in New York, USA", 
-    subtitle: "From residential buildings to commercial complexes, we build with trust and quality.", 
+    title: "Expert Painting & Construction Services in New York, USA",
+    subtitle:
+      "From residential buildings to commercial complexes, we build with trust and quality.",
   },
   {
     kind: "video",
     mp4: "/videos/painting.mp4",
     title: "Professional Painting for Homes & Offices",
-    subtitle: "Transform your space with our premium painting services and skilled professionals.", 
+    subtitle:
+      "Transform your space with our premium painting services and skilled professionals.",
   },
   {
     kind: "image",
@@ -62,8 +91,20 @@ export default function HeroBanner() {
           className="flex h-12 w-12 items-center justify-center rounded-full border border-white/35 bg-black/30 backdrop-blur-sm transition hover:scale-105"
         >
           {/* left arrow */}
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-            <path d="M15 18l-6-6 6-6" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden
+          >
+            <path
+              d="M15 18l-6-6 6-6"
+              stroke="white"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
       </div>
@@ -77,8 +118,20 @@ export default function HeroBanner() {
           className="flex h-12 w-12 items-center justify-center rounded-full border border-white/35 bg-black/30 backdrop-blur-sm transition hover:scale-105"
         >
           {/* right arrow */}
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-            <path d="M9 6l6 6-6 6" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden
+          >
+            <path
+              d="M9 6l6 6-6 6"
+              stroke="white"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
       </div>
@@ -117,27 +170,71 @@ export default function HeroBanner() {
                   <source src={s.mp4} type="video/mp4" />
                 </video>
               ) : (
-                <Image src={s.src} alt={s.title} fill priority={idx === 0} className="object-cover" />
+                <Image
+                  src={s.src}
+                  alt={s.title}
+                  fill
+                  priority={idx === 0}
+                  className="object-cover"
+                />
               )}
 
               {/* Overlays */}
               <div className="absolute inset-0" />
               <div
-          className="absolute inset-0"
-          style={{ backgroundColor: 'rgba(15, 36, 56, 0.6)' }}
-        />
+                className="absolute inset-0"
+                style={{ backgroundColor: "rgba(15, 36, 56, 0.6)" }}
+              />
 
               {/* Content */}
               <div className="relative z-10 grid h-full place-items-center px-6 py-24 text-center text-white md:px-12 lg:px-20">
                 <div className="max-w-4xl">
-                  <p className="mb-4 text-xs font-semibold tracking-[0.2em] text-yellow-400">
-                    PRO PAINTING CONSTRUCTION
-                  </p>
-                  <h1 className="text-2xl font-bold leading-tight md:text-4xl lg:text-6xl">{s.title}</h1>
-                  {s.subtitle && (
-                    <p className="mx-auto mt-6 max-w-3xl text-sm md:text-base text-white/85 lg:text-lg">{s.subtitle}</p>
-                  )}
-                  <div className="mt-10 flex items-center justify-center gap-4">
+                  <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.6 }}
+                    transition={{ duration: 0.6, ease: [0.42, 0, 0.58, 1] }}
+                    className=""
+                  >
+                    <p className="mb-4 text-xs font-semibold tracking-[0.2em] text-yellow-400">
+                      PRO PAINTING CONSTRUCTION
+                    </p>
+                  </motion.div>
+                  <motion.h1
+                    className="text-2xl font-bold leading-tight md:text-4xl lg:text-6xl"
+                    variants={headingVariants}
+                    initial="hidden"
+                    animate="visible"
+                    key={s.title} // ensures new animation on slide change
+                  >
+                    {s.title}
+                  </motion.h1>
+
+                  <motion.p
+                    className="mx-auto mt-6 max-w-3xl text-sm md:text-base text-white/85 lg:text-lg"
+                    variants={container}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.6 }}
+                  >
+                    {s.subtitle?.split(" ").map((word, i) => (
+                      <motion.span
+                        key={i}
+                        variants={child}
+                        className="inline-block mr-1" // spacing between words
+                      >
+                        {word}
+                      </motion.span>
+                    ))}
+                  </motion.p>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.6 }}
+                    transition={{ duration: 0.6, ease: [0.42, 0, 0.58, 1] }}
+                    className="mt-10 flex items-center justify-center gap-4"
+                  >
                     <Button asChild size="lg" className="rounded-full px-6">
                       <Link href="/contact">Get Started</Link>
                     </Button>
@@ -149,7 +246,7 @@ export default function HeroBanner() {
                     >
                       <Link href="/our-project">View Projects</Link>
                     </Button>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </div>

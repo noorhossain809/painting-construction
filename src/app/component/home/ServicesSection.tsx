@@ -13,7 +13,38 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
+
+const headingContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08 },
+  },
+};
+
+const headingChild: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { ease: "easeOut", duration: 0.5 } },
+};
+
+
+const sentence = `We specialize in a wide range of painting & construction services,including residential, commercial, and industrial projects.`;
+
+const container = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05, // controls delay between words
+    },
+  },
+};
+
+const child = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export default function ServicesSection() {
   return (
@@ -33,16 +64,45 @@ export default function ServicesSection() {
           transition={{ duration: 0.6, ease: [0.42, 0, 0.58, 1] }}
           className="text-center"
         >
-          <div className="mb-2 text-sm font-semibold tracking-[0.18em] text-amber-500">
-            OUR SERVICES
-          </div>
-          <h2 className="text-2xl font-extrabold leading-tight text-[#0B2653] md:text-5xl">
-            Our painting & construction services
-          </h2>
-          <p className="mx-auto mt-4 max-w-3xl text-slate-600 md:text-lg">
-            We specialize in a wide range of painting & construction services,
-            including residential, commercial, and industrial projects.
-          </p>
+          <motion.div
+  className="mb-2 text-sm font-semibold tracking-[0.18em] text-amber-500"
+  initial={{ opacity: 0, x: -30 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.6, ease: "easeOut" }}
+  viewport={{ once: true, amount: 0.6 }}
+>
+  OUR SERVICES
+</motion.div>
+         <motion.h2
+  className="text-2xl font-extrabold leading-tight text-[#0B2653] md:text-5xl"
+  variants={headingContainer}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.6 }}
+>
+  {"Our painting & construction services".split(" ").map((word, i) => (
+    <motion.span key={i} variants={headingChild} className="inline-block mr-2">
+      {word}
+    </motion.span>
+  ))}
+</motion.h2>
+          <motion.p
+            className="md:text-xl text-base text-muted-foreground max-w-3xl mx-auto"
+            variants={container}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.6 }}
+          >
+            {sentence.split(" ").map((word, i) => (
+              <motion.span
+                key={i}
+                variants={child}
+                className="inline-block mr-1" // spacing between words
+              >
+                {word}
+              </motion.span>
+            ))}
+          </motion.p>
         </motion.div>
 
         {/* Cards */}
@@ -82,32 +142,41 @@ export default function ServicesSection() {
         {/* CTA */}
         <div className="mt-10 flex justify-center md:mt-14">
           <Link href="/service">
-            <Button
-              size="lg"
-              className="group relative overflow-hidden rounded-md bg-amber-500 lg:px-6 px-3 py-3 lg:py-6 text-white text-base hover:bg-amber-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40"
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.6, ease: [0.42, 0, 0.58, 1] }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
             >
-              {/* the black wipe */}
-              <span
-                className="pointer-events-none absolute inset-0 left-0 w-0 bg-black transition-[width] duration-400 ease-out group-hover:w-full"
-                aria-hidden="true"
-              />
-              {/* label stays above the wipe */}
-              <span className="relative z-10 flex items-center gap-1.5 transition-colors duration-300 group-hover:text-white">
-                See More
-                <svg
-                  className="h-5 w-5"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M5 12h14" />
-                  <path d="m12 5 7 7-7 7" />
-                </svg>
-              </span>
-            </Button>
+              <Button
+                size="lg"
+                className="group relative overflow-hidden rounded-md bg-amber-500 lg:px-6 px-3 py-3 lg:py-6 text-white text-base hover:bg-amber-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40"
+              >
+                {/* the black wipe */}
+                <span
+                  className="pointer-events-none absolute inset-0 left-0 w-0 bg-black transition-[width] duration-400 ease-out group-hover:w-full"
+                  aria-hidden="true"
+                />
+                {/* label stays above the wipe */}
+                <span className="relative z-10 flex items-center gap-1.5 transition-colors duration-300 group-hover:text-white">
+                  See More
+                  <svg
+                    className="h-5 w-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </span>
+              </Button>
+            </motion.div>
           </Link>
         </div>
       </div>
