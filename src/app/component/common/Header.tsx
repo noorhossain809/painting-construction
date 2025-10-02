@@ -154,16 +154,6 @@ const Header: React.FC = () => {
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-
-                <NavigationMenuItem>
-                  <NavigationMenuLink
-                    asChild
-                    className={navigationMenuTriggerStyle()}
-                  >
-                    <Link href="/our-location">Location</Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>
                     <Link href="/our-work">Our Works</Link>
@@ -206,6 +196,14 @@ const Header: React.FC = () => {
                     <Link href="/news" className="">
                       Newsroom
                     </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuLink
+                    asChild
+                    className={navigationMenuTriggerStyle()}
+                  >
+                    <Link href="/our-location">Location</Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
               </NavigationMenuList>
@@ -316,22 +314,6 @@ const Header: React.FC = () => {
                         </div>
                       </AccordionContent>
                     </AccordionItem>
-
-                    <AccordionItem value="docs">
-                      <AccordionTrigger className="px-2">
-                        Location
-                      </AccordionTrigger>
-                      <AccordionContent className="px-2">
-                        <Link
-                          href="/"
-                          className="block rounded-md border p-3"
-                          onClick={() => setMobileOpen(false)}
-                        >
-                          Our Location
-                        </Link>
-                      </AccordionContent>
-                    </AccordionItem>
-
                     <AccordionItem value="list">
                       <AccordionTrigger className="px-2">
                         <Link href="/our-work">Our Works</Link>
@@ -379,25 +361,32 @@ const Header: React.FC = () => {
                         </ul>
                       </AccordionContent>
                     </AccordionItem>
-
-                    <AccordionItem value="with-icon">
-                      <AccordionTrigger className="px-2">
-                        Newsroom
-                      </AccordionTrigger>
-                      <AccordionContent className="px-2">
-                        <ul className="space-y-2 ">
-                          <Link
-                            href="/news"
-                            onClick={() => setMobileOpen(false)}
-                            className="block rounded-md border p-3 transition-colors hover:bg-muted/40"
-                          >
-                            News
-                          </Link>
-                        </ul>
-                      </AccordionContent>
-                    </AccordionItem>
                   </Accordion>
 
+                  <div className="border-b border-t py-1">
+                    <Link
+                      href="/news"
+                      onClick={() => setMobileOpen(false)}
+                      className="block rounded-md p-2"
+                      role="menuitem"
+                    >
+                      <h3 className="text-lg font-medium leading-snug text-black hover:underline">
+                        News
+                      </h3>
+                    </Link>
+                  </div>
+                  <div className="border-b py-1">
+                    <Link
+                      href="/our-location"
+                      onClick={() => setMobileOpen(false)}
+                      className="block rounded-md p-2"
+                      role="menuitem"
+                    >
+                      <h3 className="text-lg font-medium leading-snug text-black hover:underline">
+                        Our Location
+                      </h3>
+                    </Link>
+                  </div>
                   {/* Mobile CTA */}
                   <div className="px-2 py-4">
                     <Link href="/contact">

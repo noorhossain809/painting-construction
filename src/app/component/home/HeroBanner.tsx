@@ -88,7 +88,7 @@ export default function HeroBanner() {
       >
         <button
           aria-label="Previous slide"
-          className="flex h-12 w-12 items-center justify-center rounded-full border border-white/35 bg-black/30 backdrop-blur-sm transition hover:scale-105"
+          className="flex h-10 w-10 lg:h-12 lg:w-12 items-center justify-center rounded-full border border-white/35 bg-black/30 backdrop-blur-sm transition hover:scale-105"
         >
           {/* left arrow */}
           <svg
@@ -115,7 +115,7 @@ export default function HeroBanner() {
       >
         <button
           aria-label="Next slide"
-          className="flex h-12 w-12 items-center justify-center rounded-full border border-white/35 bg-black/30 backdrop-blur-sm transition hover:scale-105"
+          className="flex h-10 w-10 lg:h-12 lg:w-12 items-center justify-center rounded-full border border-white/35 bg-black/30 backdrop-blur-sm transition hover:scale-105"
         >
           {/* right arrow */}
           <svg
@@ -211,7 +211,7 @@ export default function HeroBanner() {
                   </motion.h1>
 
                   <motion.p
-                    className="mx-auto mt-6 max-w-3xl text-sm md:text-base text-white/85 lg:text-lg"
+                    className="mx-auto px-8 mt-6 max-w-3xl text-sm md:text-base text-white/85 lg:text-lg"
                     variants={container}
                     initial="hidden"
                     whileInView="visible"
@@ -244,7 +244,7 @@ export default function HeroBanner() {
                       variant="secondary"
                       className="rounded-full border border-white/30 bg-white/15 text-white hover:bg-white/25"
                     >
-                      <Link href="/our-project">View Projects</Link>
+                      <Link href="/our-work">View Projects</Link>
                     </Button>
                   </motion.div>
                 </div>
