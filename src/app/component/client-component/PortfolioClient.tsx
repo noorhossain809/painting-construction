@@ -16,17 +16,19 @@ import { Project } from "@/app/data/projects";
 type Category =
   | "all"
   | "industrial"
+  | "interior"
   | "education"
   | "office"
   | "retail"
   | "building"
   | "civil"
-  | "Residential";
+  | "residential";
 
 const CATEGORIES: { label: string; value: Category }[] = [
   { label: "All Projects", value: "all" },
   { label: "Industrial", value: "industrial" },
-  { label: "Residential", value: "Residential" },
+  { label: "Residential", value: "residential" },
+  { label: "Interior", value: "interior" },
   { label: "Education", value: "education" },
   { label: "Office", value: "office" },
   { label: "Retail", value: "retail" },

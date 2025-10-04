@@ -72,6 +72,13 @@ const slides: Slide[] = [
       "Transform your space with our premium painting services and skilled professionals.",
   },
   {
+    kind: "video",
+    mp4: "/videos/steam-cleaning.mp4",
+    title: "Professional Steam Cleaning Services",
+    subtitle:
+      "Deep-cleaning carpets, upholstery, and tiles with eco-friendly steam technology.",
+  },
+  {
     kind: "image",
     src: "/assets/construct-planning.jpg",
     title: "Your Vision, Our Blueprint",

@@ -8,6 +8,7 @@ import { blogPosts } from "@/app/data/projects";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import ContactSupport from "@/components/ui/ContactSupport";
+import Markdown from 'react-markdown'
 
 /**
  * Use an explicit record type for params to avoid `any` while remaining flexible.
@@ -111,7 +112,7 @@ export default async function NewsPostPage(props: Props) {
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-12">
           <main className="lg:col-span-2">
-            <article className="prose prose-lg max-w-none prose-p:text-gray-600 prose-headings:text-gray-800">
+            {/* <article className="prose prose-lg max-w-none prose-p:text-gray-600 prose-headings:text-gray-800">
               <h3 className="text-2xl md:text-3xl font-semibold text-[#0B2653] mb-4">
                 {post.title}
               </h3>
@@ -139,7 +140,33 @@ export default async function NewsPostPage(props: Props) {
               <p className="text-muted-foreground leading-relaxed">
                 {post.content?.substring(500)}
               </p>
-            </article>
+            </article> */}
+
+            <article className="prose prose-lg max-w-none prose-p:text-gray-600 prose-headings:text-gray-800 markdown">
+
+  <h3 className="text-2xl md:text-3xl font-semibold text-[#0B2653] mb-4">
+    {post.title}
+  </h3>
+                <figure className="my-8">
+    <Image
+      src={post.image}
+      alt={post.alt ?? post.title}
+      width={1000}
+      height={150}
+      className="rounded-lg w-full lg:h-[500px]"
+    />
+    <figcaption className="text-center text-sm text-gray-500 mt-2">
+      Team construction engineers working at construction site with blueprint on table
+    </figcaption>
+  </figure>
+  <p className="text-muted-foreground leading-relaxed">{post.description}</p>
+
+  <Markdown>
+    {post.content}
+  </Markdown>
+
+  
+</article>
 
             <div className="mt-12 flex flex-wrap gap-2">
               <Button className="bg-yellow-500 hover:bg-yellow-600 text-gray-800">

@@ -132,7 +132,7 @@ const PortfolioDetails = async(props: Props) => {
                   {project.gallery.map((img, index) => (
                     <CarouselItem key={index} className="pl-0">
                       {/* Panoramic aspect & fill image */}
-                      <div className="relative aspect-[21/10]">
+                      <div className="relative aspect-[21/15]">
                         <Image
                           src={img}
                           alt={`${project.title} image ${index + 1}`}

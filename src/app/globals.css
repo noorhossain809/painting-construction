@@ -136,6 +136,15 @@ h1, h2, h3, h5, h6 {
   opacity: 0.5; /* Makes inactive dots slightly transparent */
 }
 
+.markdown h2 {
+  font-weight: 500; /* bolder headings */
+  font-size: 20px;
+}
+
+.markdown p {
+  line-height: 1.7; /* more readable paragraphs */
+}
+
 
 @layer base {
   * {
