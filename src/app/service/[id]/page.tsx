@@ -10,7 +10,7 @@ import Link from "next/link";
 
 interface Props {
   params: Promise<{ id: string }>;
-};
+}
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params;
@@ -26,10 +26,13 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   return {
     title: `${service.title} | Pro Painting Construction`,
     description: service.description,
+    alternates: {
+      canonical: `/service/${service.id}`,
+    },
   };
 }
 
-const ServiceDetailsPage = async(props: Props) => {
+const ServiceDetailsPage = async (props: Props) => {
   const params = await props.params;
   const { id } = params;
 
@@ -39,8 +42,40 @@ const ServiceDetailsPage = async(props: Props) => {
     notFound();
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: service.title,
+    name: service.title,
+    description: service.description,
+    image: `https://propaintconstruction.com${service.image}`,
+    url: `https://propaintconstruction.com/service/${service.id}`,
+    provider: {
+      "@type": "ProfessionalService",
+      name: "Pro Painting Construction",
+      url: "https://propaintconstruction.com",
+      logo: "https://propaintconstruction.com/propainting_construction_web_logo.png",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "4017 Avenue D",
+        addressLocality: "Brooklyn",
+        addressRegion: "NY",
+        postalCode: "11203",
+        addressCountry: "US",
+      },
+    },
+    areaServed: {
+      "@type": "City",
+      name: "New York",
+    },
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden">
         <Image

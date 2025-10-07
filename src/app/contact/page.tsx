@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import ContactForm from "@/components/ui/contactForm";
 import ContactSupport from "@/components/ui/ContactSupport";
@@ -10,32 +9,36 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Contact Us for a Free Quote | Pro Painting Construction",
-  description: "Get in touch with Pro Painting Construction in Brooklyn, New York. Call us, email, or fill out our form for a free, no-obligation estimate on your next project.",
+  description:
+    "Get in touch with Pro Painting Construction in Brooklyn, New York. Call us, email, or fill out our form for a free, no-obligation estimate on your next project.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 const ContactPage = () => {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "Pro Painting Construction",
-    "image": "https://www.yourwebsite.com/logo.png",
-    "url": "https://www.yourwebsite.com/contact",
-    "telephone": "+1-917-539-8168",
-    "email": "mrh_nyc@yahoo.com",
-    "address": {
+    name: "Pro Painting Construction",
+    image: "https://propaintconstruction.com/propainting_construction_web_logo.png",
+    url: "https://propaintconstruction.com/contact",
+    telephone: "+1-917-539-8168",
+    email: "mrh_nyc@yahoo.com",
+    address: {
       "@type": "PostalAddress",
-      "streetAddress": "4017 Avenue D",
-      "addressLocality": "Brooklyn",
-      "addressRegion": "NY",
-      "postalCode": "11203",
-      "addressCountry": "US"
+      streetAddress: "4017 Avenue D",
+      addressLocality: "Brooklyn",
+      addressRegion: "NY",
+      postalCode: "11203",
+      addressCountry: "US",
     },
-    "openingHoursSpecification": {
+    openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "opens": "07:00",
-      "closes": "18:00"
-    }
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "07:00",
+      closes: "18:00",
+    },
   };
   return (
     <div className="min-h-screen bg-background">
@@ -64,7 +67,7 @@ const ContactPage = () => {
               </h1>
               <div className="absolute right-5 bottom-5">
                 <p className="text-gray-200">Home/contact</p>
-            </div>
+              </div>
             </div>
           </div>
         </div>
@@ -143,7 +146,8 @@ const ContactPage = () => {
                 </div>
               </div>
               <p className="text-foreground">
-                Serving all five boroughs of New York City (Manhattan, Brooklyn, Queens, The Bronx, and Staten Island) and surrounding counties.
+                Serving all five boroughs of New York City (Manhattan, Brooklyn,
+                Queens, The Bronx, and Staten Island) and surrounding counties.
               </p>
             </CardContent>
           </Card>

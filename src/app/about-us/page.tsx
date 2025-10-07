@@ -8,7 +8,11 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About Pro Painting Construction | Our Story & Mission",
-  description: "Learn about Pro Painting Construction, a leading painting and renovation company in New York. Discover our mission, values, and commitment to quality craftsmanship.",
+  description:
+    "Learn about Pro Painting Construction, a leading painting and renovation company in New York. Discover our mission, values, and commitment to quality craftsmanship.",
+  alternates: {
+    canonical: "/about-us",
+  },
 };
 
 const AboutUsPage = () => {

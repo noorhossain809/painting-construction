@@ -25,6 +25,10 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.png",
   },
+  metadataBase: new URL("https://propaintconstruction.com"),
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({

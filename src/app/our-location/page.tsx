@@ -10,24 +10,34 @@ export const metadata: Metadata = {
   title: "Our Locations & Licenses | Pro Painting Construction",
   description:
     "Find the official location and license information for Pro Painting Construction, a fully insured contractor serving Brooklyn and the greater New York City area.",
+  alternates: {
+    canonical: "/our-location",
+  },
 };
 
 const LocationPage = () => {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: "Pro Painting Construction",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "4017 Avenue D",
-      addressLocality: "Brooklyn",
-      addressRegion: "NY",
-      postalCode: "11203",
-      addressCountry: "US",
-    },
-    telephone: "+1-917-539-8168",
-    email: "mrh_nyc@yahoo.com",
-  };
+ const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Pro Painting Construction",
+  image: "https://propaintconstruction.com/propainting_construction_web_logo.png", 
+  url: "https://propaintconstruction.com/our-location",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "4017 Avenue D",
+    addressLocality: "Brooklyn",
+    addressRegion: "NY",
+    postalCode: "11203",
+    addressCountry: "US",
+  },
+  telephone: "+1-917-539-8168",
+  email: "mrh_nyc@yahoo.com",
+  hasCredential: {
+    "@type": "Text",
+    "name": "NYC Home Improvement Contractor License",
+    "text": "2105436-DCA"
+  }
+};
   return (
     <div className="min-h-screen bg-background">
       <script
@@ -82,7 +92,7 @@ const LocationPage = () => {
                 <h3 className="font-bold text-lg text-yellow-600 mb-2">
                   LICENSES
                 </h3>
-                <p className="text-gray-600">NYS #2105436-DCA</p>
+                <p className="text-gray-600">NYC #2105436-DCA</p>
                 <p className="text-gray-600">
                   Fully insured for your protection
                 </p>

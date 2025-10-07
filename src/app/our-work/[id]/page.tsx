@@ -39,6 +39,9 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   return {
     title: `${project.title} | Our Work | Pro Painting Construction`,
     description: project.description,
+     alternates: {
+      canonical: `/our-work/${project.id}`,
+    },
   };
 }
 
@@ -81,8 +84,31 @@ const PortfolioDetails = async(props: Props) => {
     notFound();
   }
 
+   const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": project.title,
+    "description": project.description,
+    "url": `https://propaintconstruction.com/our-work/${project.id}`,
+    "image": project.gallery.map(imgUrl => `https://propaintconstruction.com${imgUrl}`),
+    "provider": {
+        "@type": "Organization",
+        "name": "Pro Painting Construction",
+        "url": "https://propaintconstruction.com"
+    },
+    "locationCreated": {
+        "@type": "Place",
+        "name": project.location
+    },
+    "dateCreated": project.completedDate, // Assuming date is in ISO format e.g., "2025-10-07"
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden">
         <Image

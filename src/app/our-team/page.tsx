@@ -10,7 +10,11 @@ export const metadata: Metadata = {
   title: "Our Expert Team | Pro Painting Construction",
   description:
     "Meet the dedicated team of professionals at Pro Painting Construction. Our experienced engineers and managers are committed to delivering excellence in New York.",
-};
+
+  alternates: {
+    canonical: "/our-team",
+  },
+  };
 
 type TeamMember = {
   name: string;
@@ -47,8 +51,44 @@ const team: TeamMember[] = [
 ];
 
 export default function TeamSection() {
+    const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Our Expert Team at Pro Painting Construction",
+    "url": "https://propaintconstruction.com/our-team",
+    "description": "Meet the dedicated professionals who lead Pro Painting Construction.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Pro Painting Construction",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://propaintconstruction.com/propainting_construction_web_logo.png"
+      }
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": team.map((member, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "Person",
+          "name": member.name,
+          "jobTitle": member.role,
+          "image": `https://propaintconstruction.com${member.image}`,
+          "worksFor": {
+            "@type": "Organization",
+            "name": "Pro Painting Construction"
+          }
+        }
+      }))
+    }
+  };
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="relative h-[48vh] md:h-[70vh] overflow-hidden">
         <Image
           src="/assets/shot-of-a-group-of-builders-having-a-meeting-at-a-construction-site.jpg"

@@ -6,16 +6,52 @@ import Link from "next/link";
 import { PROJECTS } from "../data/projects";
 import PortfolioClient from "../component/client-component/PortfolioClient";
 
-
 export const metadata: Metadata = {
   title: "Our Portfolio | Featured Projects by Pro Painting Construction",
-  description: "Browse our portfolio of completed painting and construction projects in New York. See our work in residential, commercial, industrial, and educational sectors.",
+  description:
+    "Browse our portfolio of completed painting and construction projects in New York. See our work in residential, commercial, industrial, and educational sectors.",
+
+  alternates: {
+    canonical: "/our-work",
+  },
 };
 
-
 export default function PortfolioPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Project Portfolio of Pro Painting Construction",
+    url: "https://propaintconstruction.com/our-work",
+    description:
+      "A collection of featured painting and construction projects completed by Pro Painting Construction in New York.",
+    publisher: {
+      "@type": "Organization",
+      name: "Pro Painting Construction",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://propaintconstruction.com/propainting_construction_web_logo.png",
+      },
+    },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: PROJECTS.map((project, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "CreativeWork",
+          name: project.title,
+          image: `https://propaintconstruction.com${project.image}`,
+          url: "https://propaintconstruction.com/our-work",
+        },
+      })),
+    },
+  };
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section (Static Part) */}
       <section className="relative h-[48vh] md:h-[64vh] overflow-hidden">
         <Image
@@ -34,7 +70,8 @@ export default function PortfolioPage() {
                 Our Featured Projects
               </h1>
               <p className="text-lg md:text-xl opacity-90 leading-relaxed mb-6">
-                Explore a selection of our finest painting and construction work across New York City.
+                Explore a selection of our finest painting and construction work
+                across New York City.
               </p>
               <Link href="/">
                 <Button

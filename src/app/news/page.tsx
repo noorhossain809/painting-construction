@@ -9,40 +9,44 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "News & Insights | Pro Painting Construction",
-  description: "Stay updated with the latest news, industry trends, and insights from Pro Painting Construction. Read our articles on painting, renovation, and construction in New York.",
+  description:
+    "Stay updated with the latest news, industry trends, and insights from Pro Painting Construction. Read our articles on painting, renovation, and construction in New York.",
+  alternates: {
+    canonical: "/news",
+  },
 };
 
 const NewsPage = () => {
-
-
   return (
     <div className="min-h-screen bg-background">
-      
       {" "}
       {/* <-- fixed: use className */}
-  <section className="relative h-[48vh] md:h-[70vh]">
-  {/* Image goes here, fill makes it behave like a background */}
-  <Image
-    src="/assets/office-building.jpg"
-    alt="A modern office building in New York, representing the latest in construction news and trends."
-    fill
-    className="object-cover object-center"
-    priority
-  />
+      <section className="relative h-[48vh] md:h-[70vh]">
+        {/* Image goes here, fill makes it behave like a background */}
+        <Image
+          src="/assets/office-building.jpg"
+          alt="A modern office building in New York, representing the latest in construction news and trends."
+          fill
+          className="object-cover object-center"
+          priority
+        />
 
-  {/* Overlay on top of the image */}
-  <div className="absolute inset-0 opacity-100" style={{ backgroundColor: 'rgba(15, 36, 56, 0.6)' }} />
+        {/* Overlay on top of the image */}
+        <div
+          className="absolute inset-0 opacity-100"
+          style={{ backgroundColor: "rgba(15, 36, 56, 0.6)" }}
+        />
 
-  {/* Text content centered on top of everything */}
-  <div className="relative z-10 flex h-full items-center justify-center">
-    <div className="text-center text-white px-4">
-      <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight uppercase">
-        News
-      </h1>
-      <p className="text-gray-200">Home/news</p>
-    </div>
-  </div>
-</section>
+        {/* Text content centered on top of everything */}
+        <div className="relative z-10 flex h-full items-center justify-center">
+          <div className="text-center text-white px-4">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight uppercase">
+              News
+            </h1>
+            <p className="text-gray-200">Home/news</p>
+          </div>
+        </div>
+      </section>
       <section className="w-full bg-white py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
