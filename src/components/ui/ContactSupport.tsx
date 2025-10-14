@@ -37,6 +37,13 @@ const ContactSupport = () => {
             >
                +1 (917) 539-8168
             </a>
+            <a
+              id="support-heading"
+              href="tel:+1-2123803751"
+               className="mt-2 block text-lg sm:text-xl font-semibold tracking-tight text-white no-underline hover:underline"
+            >
+               +1 (212) 3803751
+            </a>
           </div>
 
           {/* mail icon */}

@@ -101,12 +101,20 @@ const ContactPage = () => {
                   <p className="text-muted-foreground">Mon-Fri: 7AM-6PM</p>
                 </div>
               </div>
-              <a
+             <div className="flex flex-col">
+               <a
                 href="tel:+1-917-539-8168"
-                className="text-primary font-bold text-xl hover:text-primary-glow transition-colors"
+                className="text-primary font-bold text-lg hover:text-primary-glow transition-colors"
               >
                 +1 (917) 539-8168
               </a>
+              <a
+              href="tel:+1-2123803751"
+              className="text-primary font-bold text-lg hover:text-primary-glow transition-colors"
+            >
+               +1 (212) 3803751
+            </a>
+             </div>
             </CardContent>
           </Card>
 

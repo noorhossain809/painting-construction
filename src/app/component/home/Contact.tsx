@@ -20,8 +20,8 @@ const contactInfo = [
     iconBg: "bg-orange-400",
     title: "Call Us",
     subtitle: "Mon-Fri: 7AM-6PM",
-    link: "tel:+1-917-539-8168",
-    linkText: "+1 (917) 539-8168",
+    link: ["tel:+1-917-539-8168", "tel:+1-212-3803751"],
+    linkText: ["+1 (917) 539-8168", "+1 (212) 380-3751"],
   },
   {
     icon: Mail,
@@ -113,7 +113,7 @@ const container = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.05, // controls delay between words
+      staggerChildren: 0.05,
     },
   },
 };
@@ -175,7 +175,7 @@ const Contact = () => {
                     : "inline-block"
                 }
               >
-                {word}&nbsp;
+                {word}{" "}
               </motion.span>
             ))}
           </motion.h2>
@@ -190,7 +190,7 @@ const Contact = () => {
               <motion.span
                 key={i}
                 variants={child}
-                className="inline-block mr-1" // spacing between words
+                className="inline-block mr-1"
               >
                 {word}
               </motion.span>
@@ -232,12 +232,26 @@ const Contact = () => {
                       </div>
 
                       {item.link ? (
-                        <a
-                          href={item.link}
-                          className="text-primary hover:text-primary-glow transition-colors"
-                        >
-                          {item.linkText}
-                        </a>
+                        Array.isArray(item.link) ? (
+                          <div className="flex flex-col items-start space-y-1">
+                            {item.link.map((singleLink, index) => (
+                              <a
+                                key={index}
+                                href={singleLink}
+                                className="text-primary hover:text-primary-glow transition-colors"
+                              >
+                                {item.linkText[index]}
+                              </a>
+                            ))}
+                          </div>
+                        ) : (
+                          <a
+                            href={item.link}
+                            className="text-primary hover:text-primary-glow transition-colors"
+                          >
+                            {item.linkText}
+                          </a>
+                        )
                       ) : (
                         item.text && (
                           <p className="text-foreground">{item.text}</p>
@@ -358,22 +372,6 @@ const Contact = () => {
             </motion.div>
           </motion.div>
         </div>
-
-        {/* Map Placeholder */}
-        {/* <div className="mt-16">
-  <div className="border-0 shadow-card overflow-hidden">
-    <div className="h-64">
-      <iframe
-       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.194793927504!2d-73.94097952348486!3d40.64179164191007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25b584e308649%3A0x9bdfa40ff79aa49e!2s4017%20Avenue%20D%2C%20Brooklyn%2C%20NY%2011203%2C%20USA!5e1!3m2!1sen!2sbd!4v1758001045179!5m2!1sen!2sbd"
-        width="100%"
-        height="100%"
-        style={{ border: 0 }}
-        allowFullScreen
-        loading="lazy"
-      ></iframe>
-    </div>
-  </div>
-</div> */}
       </div>
     </section>
   );

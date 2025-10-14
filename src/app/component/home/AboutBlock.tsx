@@ -113,12 +113,20 @@ export default function AboutBlock() {
                   <div className="text-sm text-slate-500">
                     call support center 24x7
                   </div>
-                  <a
+                    <div className="flex flex-col">
+                      <a
                     href="tel:+1-917-539-8168"
-                    className="md:text-xl text-lg font-semibold tracking-wide text-slate-900 hover:text-amber-600"
+                    className="md:text-lg text-base font-semibold tracking-wide text-slate-900 hover:text-amber-600"
                   >
                     +1 (917) 539-8168
                   </a>
+                  <a
+              href="tel:+1-2123803751"
+              className="md:text-lg text-base font-semibold tracking-wide text-slate-900 hover:text-amber-600"
+            >
+               +1 (212) 3803751
+            </a>
+                    </div>
                 </div>
               </div>
             </motion.div>

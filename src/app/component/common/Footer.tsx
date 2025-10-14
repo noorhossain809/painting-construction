@@ -65,17 +65,26 @@ const Footer = () => {
             <div className="space-y-4 text-white/80 md:text-base text-sm">
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-orange-400" />
-                <a
+               <div>
+                 <a
               id="support-heading"
               href="tel:+1-917-539-8168"
-              className="mt-2 block tracking-tight text-white no-underline hover:underline"
+              className="mt-2 text-sm block tracking-tight text-white no-underline hover:underline"
             >
                +1 (917) 539-8168
             </a>
+                <a
+              id="support-heading"
+              href="tel:+1-2123803751"
+              className="mt-2 text-sm block tracking-tight text-white no-underline hover:underline"
+            >
+               +1 (212) 3803751
+            </a>
+               </div>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-orange-400" />
-                <span>mrh_nyc@yahoo.com</span>
+                <span className="text-sm">mrh_nyc@yahoo.com</span>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-orange-400 mt-0.5" />
