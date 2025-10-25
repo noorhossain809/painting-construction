@@ -42,7 +42,7 @@ const ContactSupport = () => {
               href="tel:+1-2123803751"
                className="mt-2 block text-lg sm:text-xl font-semibold tracking-tight text-white no-underline hover:underline"
             >
-               +1 (212) 3803751
+               +1 (212) 380-3751
             </a>
           </div>
 

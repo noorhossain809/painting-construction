@@ -112,7 +112,7 @@ const ContactPage = () => {
               href="tel:+1-2123803751"
               className="text-primary font-bold text-lg hover:text-primary-glow transition-colors"
             >
-               +1 (212) 3803751
+               +1 (212) 380-3751
             </a>
              </div>
             </CardContent>

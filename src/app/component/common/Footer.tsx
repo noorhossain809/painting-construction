@@ -78,7 +78,7 @@ const Footer = () => {
               href="tel:+1-2123803751"
               className="mt-2 text-sm block tracking-tight text-white no-underline hover:underline"
             >
-               +1 (212) 3803751
+               +1 (212) 380-3751
             </a>
                </div>
               </div>

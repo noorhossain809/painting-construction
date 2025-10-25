@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { PhoneCall } from "lucide-react";
+import { PhoneCall, CircleCheck } from "lucide-react";
+
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 
@@ -59,8 +60,11 @@ export default function AboutBlock() {
                   className="flex items-start space-x-4"
                   variants={itemVariants}
                 >
-                  <div className="inline-flex h-6 md:w-6 w-9 items-center justify-center rounded-full bg-amber-500">
+                  {/* <div className="inline-flex h-6 md:w-6 w-9 items-center justify-center rounded-full bg-amber-500">
                     <span className="text-white text-sm font-bold">✓</span>
+                  </div> */}
+                  <div>
+                    <CircleCheck className="text-yellow-600/80" />
                   </div>
                   <div>
                     <h4 className="text-base md:text-lg font-semibold text-construction-dark mb-2">
@@ -124,7 +128,7 @@ export default function AboutBlock() {
               href="tel:+1-2123803751"
               className="md:text-lg text-base font-semibold tracking-wide text-slate-900 hover:text-amber-600"
             >
-               +1 (212) 3803751
+               +1 (212) 380-3751
             </a>
                     </div>
                 </div>
